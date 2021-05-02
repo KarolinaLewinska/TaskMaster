@@ -6,12 +6,29 @@
 
 <ion-content [fullscreen]="true">
   <div id="mainPage">
-    <strong>Witamy w Task Master</strong>
-    <img src="assets\icon\logo.png">
-    <p>Nasza aplikacja pomoże ci w zarządzaniu osobistymi zadaniami</p>
-    <ion-button color="danger" (click)="getTasksListPage()"  shape="round">
-      Zaczynamy
-    </ion-button>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12">
+          <strong>Witamy w Task Master</strong>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <img src="assets\icon\logo.png">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <p>Nasza aplikacja pomoże Ci w zarządzaniu osobistymi zadaniami</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button color="danger" (click)="getTasksListPage()"  shape="round">
+            Zaczynamy
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
-  
 </ion-content>
