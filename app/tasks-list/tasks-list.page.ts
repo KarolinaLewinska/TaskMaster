@@ -15,5 +15,8 @@ export class TasksListPage implements OnInit {
   backToHomePage() {
     this.route.navigate(['/home']);
   }
+  getAddTaskPage() {
+    this.route.navigate(['/add-task']);
+  }
 
 }

@@ -11,7 +11,7 @@ export class HomePage {
 
   constructor(private route: Router) {}
 
-  getTasksListI() {
+  getTasksListPage() {
     this.route.navigate(['/tasks-list']);
   }
 }
