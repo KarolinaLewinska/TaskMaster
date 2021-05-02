@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Twoje zadania</ion-title>
+    <img src="assets\icon\logo2.png" width="120" height="60">
   </ion-toolbar>
 </ion-header>
 
@@ -8,15 +8,12 @@
   <div id="back">
     <ion-icon (click)="backToHomePage()" id="back" name="arrow-back-outline"></ion-icon>
   </div>
-  <i-list>
-    <div>
-      <h5>Moje zadania:</h5>
-    </div>
-  </i-list>
-  
-  <div>
-    <ion-button color="danger" (click)="getAddTaskPage()" shape="round">
-      Dodaj zadanie
+  <div id="strong">
+    <strong>Moje zadania</strong>
+  </div>
+  <div id="newTaskB">
+    <ion-button color="danger" (click)="getAddTaskPage()">
+      Nowe zadanie
     </ion-button>
   </div>
 </ion-content>

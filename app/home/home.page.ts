@@ -11,8 +11,11 @@ export class HomePage {
 
   constructor(private route: Router) {}
 
-  getTasksListPage() {
-    this.route.navigate(['/tasks-list']);
+  getLoginPage() {
+    this.route.navigate(['/login']);
+  }
+  getRegisterPage() {
+    this.route.navigate(['/register']);
   }
 }
 

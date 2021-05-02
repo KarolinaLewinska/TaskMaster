@@ -1,12 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Dodaj zadanie</ion-title>
+    <img src="assets\icon\logo2.png" width="120" height="60">
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div id="back">
       <ion-icon (click)="backToTasksListPage()" id="back" name="arrow-back-outline"></ion-icon>
+  </div>
+  <div id="strong">
+    <strong>Dodaj zadanie</strong>
   </div>
   <ion-list>
     <ion-item>
@@ -52,7 +55,7 @@
   <ion-grid>
     <ion-row>
       <ion-col class="ion-text-center">
-        <ion-button color="danger" size="default" (click)="addTask()"  shape="round">
+        <ion-button color="danger" size="default" (click)="addTask()">
           Dodaj
           <ion-icon id="addIcon" name="add-circle-outline"></ion-icon>
         </ion-button>

@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar id="toolbar">
+  <ion-toolbar>
       <img src="assets\icon\logo2.png" width="120" height="60">
   </ion-toolbar>
 </ion-header>
@@ -24,8 +24,15 @@
       </ion-row>
       <ion-row>
         <ion-col size="12">
-          <ion-button color="danger" (click)="getTasksListPage()"  shape="round">
-            Zaczynamy
+          <ion-button color="danger" (click)="getLoginPage()">
+            Zaloguj się
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button color="danger" (click)="getRegisterPage()">
+            Zarejestruj się
           </ion-button>
         </ion-col>
       </ion-row>
