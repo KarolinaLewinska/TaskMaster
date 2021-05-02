@@ -6,9 +6,12 @@ import { Router } from '@angular/router';
   templateUrl: './add-task.page.html',
   styleUrls: ['./add-task.page.scss'],
 })
-export class AddTaskPage implements OnInit {
 
-  constructor(private route: Router) { }
+export class AddTaskPage implements OnInit {
+  myDate: String = new Date().toISOString();
+  constructor(private route: Router) { 
+    
+  }
 
   ngOnInit() {
   }
