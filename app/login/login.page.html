@@ -22,7 +22,7 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="fixed">Email</ion-label>
-          <ion-input type="email" placeholder="..." required></ion-input>
+          <ion-input type="email" [(ngModel)]="user.email" placeholder="..." required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -30,13 +30,13 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="fixed">Hasło</ion-label>
-          <ion-input type="password" placeholder="..." required></ion-input>
+          <ion-input type="password" [(ngModel)]="user.password" placeholder="..." required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
   <div id="loginB">
-    <ion-button  color="danger" [routerLink]="['/tasks-list']">
+    <ion-button  color="danger" (click)="login(user)">
       Zaloguj się
     </ion-button>
   </div>

@@ -20,7 +20,7 @@ export class RegisterPage implements OnInit {
   }
 
   async register(user: User) {
-    if(this.formValidation()) {
+    if (this.formValidation()) {
       let loader = this.loadingController.create({
           message: "Trwa rejestracja, proszę czekać..."
       });
@@ -29,11 +29,27 @@ export class RegisterPage implements OnInit {
       try {
         await this.angularFireAuth.createUserWithEmailAndPassword(user.email, user.password)
         .then(data => {
-          console.log(data)
           this.navController.navigateBack("login");
         });
       } catch(err) {
-        this.showToast(err);
+        var errorCode = err.code;
+        var errorMessage = err.message;
+
+        if (errorCode == 'auth/internal-error') {
+          errorMessage="Błąd uwierzytelniania!"
+          this.showToast(errorMessage);
+        } 
+        else if (errorCode == 'auth/email-already-in-use') {
+          errorMessage="Użytkownik o podanym adresie email już istnieje!"
+          this.showToast(errorMessage);
+        }
+        else if (user.email || user.password) {
+          errorMessage="Nieprawidłowy format adresu email lub hasła!"
+          this.showToast(errorMessage);
+        }
+        else {
+          this.showToast(err);
+        }
       }
       (await loader).dismiss();
     }
@@ -41,11 +57,11 @@ export class RegisterPage implements OnInit {
 
   formValidation() {
     if(!this.user.email) {
-      this.showToast("Podaj adres email")
+      this.showToast("Adres email jest wymagany")
       return false;
     }
     if(!this.user.password) {
-      this.showToast("Podaj hasło")
+      this.showToast("Hasło jest wymagane")
       return false;
     }
     return true;
