@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'edit-task/:id',
+    loadChildren: () => import('./edit-task/edit-task.module').then( m => m.EditTaskPageModule)
+  },
 ];
 
 @NgModule({

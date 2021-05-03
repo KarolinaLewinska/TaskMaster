@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
-import { User } from "../models/user.mode"
+import { User } from "../models/user"
 
 @Component({
   selector: 'app-register',
@@ -20,17 +20,19 @@ export class RegisterPage implements OnInit {
   }
 
   async register(user: User) {
-    if (this.formValidation()) {
+    if (this.validateForms()) {
       let loader = this.loadingController.create({
           message: "Trwa rejestracja, proszę czekać..."
       });
       (await loader).present();
 
       try {
-        await this.angularFireAuth.createUserWithEmailAndPassword(user.email, user.password)
+        await this.angularFireAuth
+        .createUserWithEmailAndPassword(user.email, user.password)
         .then(data => {
           this.navController.navigateBack("login");
         });
+
       } catch(err) {
         var errorCode = err.code;
         var errorMessage = err.message;
@@ -55,13 +57,13 @@ export class RegisterPage implements OnInit {
     }
   }
 
-  formValidation() {
+  validateForms() {
     if(!this.user.email) {
-      this.showToast("Adres email jest wymagany")
+      this.showToast("Adres email jest wymagany!")
       return false;
     }
     if(!this.user.password) {
-      this.showToast("Hasło jest wymagane")
+      this.showToast("Hasło jest wymagane!")
       return false;
     }
     return true;

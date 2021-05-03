@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
-import { User } from '../models/user.mode';
-
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +20,7 @@ export class LoginPage implements OnInit {
   }
 
   async login(user: User) {
-    if (this.formValidation()) {
+    if (this.validateForms()) {
       let loader = this.loadingController.create({
         message: "Trwa logowanie, proszę czekać..."
       });
@@ -38,7 +37,7 @@ export class LoginPage implements OnInit {
         var errorMessage = err.message;
 
         if (errorCode == 'auth/internal-error') {
-          errorMessage="Błąd uwierzytelniania"
+          errorMessage="Błąd uwierzytelniania!"
           this.showToast(errorMessage);
         } 
         else if (errorCode == 'auth/user-not-found') {
@@ -55,15 +54,15 @@ export class LoginPage implements OnInit {
       }
       (await loader).dismiss();
     }
-
   }
-  formValidation() {
+  
+  validateForms() {
     if(!this.user.email) {
-      this.showToast("Adres email jest wymagany")
+      this.showToast("Adres email jest wymagany!")
       return false;
     }
     if(!this.user.password) {
-      this.showToast("Hasło jest wymagane")
+      this.showToast("Hasło jest wymagane!")
       return false;
     }
     return true;
@@ -76,5 +75,4 @@ export class LoginPage implements OnInit {
     })
     .then(toastData => toastData.present()); 
   }
-
 }

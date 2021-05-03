@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { LoadingController, ToastController } from '@ionic/angular';
 
-
 @Component({
   selector: 'app-tasks-list',
   templateUrl: './tasks-list.page.html',
@@ -13,21 +12,20 @@ export class TasksListPage implements OnInit {
   constructor(
     private loadingController: LoadingController,
     private toastController: ToastController,
-    private firestore: AngularFirestore) { }
+    private angularFirestore: AngularFirestore) { }
 
   ngOnInit() {
+    this.getTasks();
   }
-
-  ionViewWillEnter() {}
 
   async getTasks() {
     let loader = this.loadingController.create({
-      message: "Trwa logowanie, proszę czekać..."
+      message: "Pobieranie listy zadań, proszę czekać..."
     });
     (await loader).present();
 
     try {
-      this.firestore.collection("tasks")
+      this.angularFirestore.collection("tasks")
       .snapshotChanges()
       .subscribe(data => {
         this.tasks = data.map(m => {
@@ -35,17 +33,28 @@ export class TasksListPage implements OnInit {
             id: m.payload.doc.id,
             deadline: m.payload.doc.data()["deadline"],
             title: m.payload.doc.data()["title"],
-            // description: m.payload.doc.data()["description"],
-            // category: m.payload.doc.data()["category"],
-            // priority: m.payload.doc.data()["priority"],
+            description: m.payload.doc.data()["description"],
+            category: m.payload.doc.data()["category"],
+            priority: m.payload.doc.data()["priority"],
           };
         })
       });
+
     } catch(err) {
       this.showToast(err);
     }
-    
+    (await loader).dismiss();
   }
+
+  async deleteTask(id: string) {
+    let loader = this.loadingController.create({
+      message: "Trwa usuwanie, proszę czekać..."
+    });
+    (await loader).present();
+    await this.angularFirestore.doc("tasks/" + id).delete();
+    (await loader).dismiss();
+  }
+
   showToast(message: string) {
     this.toastController.create({
       message: message,
@@ -53,5 +62,4 @@ export class TasksListPage implements OnInit {
     })
     .then(toastData => toastData.present()); 
   }
-
 }
