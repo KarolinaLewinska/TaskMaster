@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-add-task',
@@ -9,14 +9,11 @@ import { Router } from '@angular/router';
 
 export class AddTaskPage implements OnInit {
   myDate: String = new Date().toISOString();
-  constructor(private route: Router) { 
+  constructor() { 
     
   }
 
   ngOnInit() {
-  }
-  backToTasksListPage() {
-    this.route.navigate(['/tasks-list']);
   }
 
 }

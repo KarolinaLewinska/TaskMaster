@@ -6,7 +6,7 @@
 
 <ion-content>
   <div id="back">
-      <ion-icon (click)="backToTasksListPage()" id="back" name="arrow-back-outline"></ion-icon>
+      <ion-icon [routerLink]="['/tasks-list']" id="back" name="arrow-back-outline"></ion-icon>
   </div>
   <div id="strong">
     <strong>Dodaj zadanie</strong>
@@ -18,11 +18,11 @@
     </ion-item>
     <ion-item>
       <ion-label color="black">Tytuł</ion-label>
-      <ion-input placeholder="..."></ion-input>
+      <ion-input placeholder="..." required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Opis</ion-label>
-      <ion-textarea placeholder="..."></ion-textarea>
+      <ion-textarea placeholder="..." required></ion-textarea>
     </ion-item>
     <ion-item>
       <ion-label>Kategoria</ion-label>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -8,18 +8,9 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private route: Router) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-  backToHomePage() {
-    this.route.navigate(['/home']);
-  }
-  getRegisterPage() {
-    this.route.navigate(['/register'])
-  }
-  getTasksListPage() {
-    this.route.navigate(['/tasks-list'])
   }
 
 }

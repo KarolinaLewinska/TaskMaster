@@ -8,10 +8,10 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-          <ion-icon id="back" (click)="backToHomePage()" name="arrow-back-outline"></ion-icon>
+          <ion-icon id="back" [routerLink]="['/home']" name="arrow-back-outline"></ion-icon>
       </ion-col>
       <ion-col id="logIcon">
-        <ion-icon id="login" (click)="getLoginPage()" name="log-in-outline"></ion-icon>
+        <ion-icon id="login" [routerLink]="['/login']" name="log-in-outline"></ion-icon>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -23,7 +23,7 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="fixed">Email</ion-label>
-          <ion-input type="email" placeholder="..."></ion-input>
+          <ion-input type="email" [(ngModel)]="user.email" placeholder="..." required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -31,16 +31,14 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="fixed">Hasło</ion-label>
-          <ion-input type="password" placeholder="..."></ion-input>
+          <ion-input type="password" [(ngModel)]="user.password" placeholder="..." required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
   <div id="registerB">
-    <ion-button  color="danger" (click)="getLoginPage()">
+    <ion-button  color="danger" (click)="register(user)">
       Zarejestruj się
     </ion-button>
   </div>
-  
-  
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -9,13 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  constructor(private route: Router) {}
+  constructor() {}
 
-  getLoginPage() {
-    this.route.navigate(['/login']);
-  }
-  getRegisterPage() {
-    this.route.navigate(['/register']);
-  }
 }
 

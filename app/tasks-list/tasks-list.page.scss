@@ -1,6 +1,7 @@
 #back {
     color:#800000;
     font-size:50px;
+    margin-left:5px;
 }
 #strong {
     text-align: center;
@@ -9,4 +10,7 @@
 }
 #newTaskB {
     text-align: center;
+}
+ion-item-sliding {
+    border-bottom: 1px solid lightgray;
 }

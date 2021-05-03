@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="medium">
       <img src="assets\icon\logo2.png" width="120" height="60">
   </ion-toolbar>
 </ion-header>
@@ -24,14 +24,15 @@
       </ion-row>
       <ion-row>
         <ion-col size="12">
-          <ion-button color="danger" (click)="getLoginPage()">
+          <ion-button color="danger" [routerLink]="['/login']">
             Zaloguj się
           </ion-button>
         </ion-col>
       </ion-row>
+      lub
       <ion-row>
         <ion-col size="12">
-          <ion-button color="danger" (click)="getRegisterPage()">
+          <ion-button color="danger" [routerLink]="['/register']">
             Zarejestruj się
           </ion-button>
         </ion-col>

@@ -7,10 +7,10 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-          <ion-icon id="back" (click)="backToHomePage()" id="back" name="arrow-back-outline"></ion-icon>
+          <ion-icon id="back" [routerLink]="['/home']" id="back" name="arrow-back-outline"></ion-icon>
       </ion-col>
       <ion-col id="regIcon">
-        <ion-icon id="register" (click)="getRegisterPage()" name="person-add-outline"></ion-icon>
+        <ion-icon id="register" [routerLink]="['/register']" name="person-add-outline"></ion-icon>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -22,7 +22,7 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="fixed">Email</ion-label>
-          <ion-input type="email" placeholder="..."></ion-input>
+          <ion-input type="email" placeholder="..." required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -30,13 +30,13 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="fixed">Hasło</ion-label>
-          <ion-input type="password" placeholder="..."></ion-input>
+          <ion-input type="password" placeholder="..." required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
   <div id="loginB">
-    <ion-button  color="danger" (click)="getTasksListPage()">
+    <ion-button  color="danger" [routerLink]="['/tasks-list']">
       Zaloguj się
     </ion-button>
   </div>
