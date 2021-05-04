@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingController, NavController, ToastController } from '@ionic/angular';
-import { Task } from '../models/task'
+import { LoadingController, NavController, ToastController, NavParams } from '@ionic/angular';
+import firebase from 'firebase';
+import { Task } from '../shared/task'
+
 
 @Component({
   selector: 'app-edit-task',
@@ -17,7 +19,8 @@ export class EditTaskPage implements OnInit {
     private loadingController: LoadingController,
     private angularFirestore: AngularFirestore,
     private toastController: ToastController,
-    private navController: NavController) { 
+    private navController: NavController,
+    private navParams: NavParams) { 
       this.id = this.activatedRoute.snapshot.paramMap.get("id");
     }
 
@@ -31,18 +34,30 @@ export class EditTaskPage implements OnInit {
     });
 
     (await loader).present();
-    this.angularFirestore.doc("tasks/" + id)
-    .valueChanges()
-    .subscribe(data => {
-      this.task.deadline = data['deadline'];
-      this.task.title = data['title'];
-      this.task.description = data['description'];
-      this.task.category = data['category'];
-      this.task.priority = data['priority']; 
-    });
-    (await loader).dismiss();
+    try {
+      let currentUser = firebase.auth().currentUser;
+      if(currentUser){
+				this.angularFirestore.collection("users").doc(currentUser.uid).collection('tasks').doc(id).valueChanges()
+        .subscribe(data => {
+          this.task = data.map(m => {
+            return {
+              id: m.payload.doc.id,
+              deadline: m.payload.doc.data()["deadline"],
+              title: m.payload.doc.data()["title"],
+              description: m.payload.doc.data()["description"],
+              category: m.payload.doc.data()["category"],
+              priority: m.payload.doc.data()["priority"],
+            };
+          })
+        });
+			}
+    } 
+    catch(err) {
+
+    }
   }
   async editTask(task: Task) {
+    let currentUser = firebase.auth().currentUser;
     if (this.validateForms()) {
       let loader = this.loadingController.create({
         message: "Trwa aktualizowanie zadania, proszę czekać..."
@@ -50,7 +65,7 @@ export class EditTaskPage implements OnInit {
       (await loader).present();
 
       try {
-        await this.angularFirestore.doc("tasks/" + this.id).update(task);
+        await this.angularFirestore.collection("users").doc(currentUser.uid).collection('tasks').doc(this.id).update(task);
         
       } catch(err) {
         this.showToast(err);

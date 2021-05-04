@@ -5,7 +5,7 @@
 </ion-header>
 <ion-content>
   <div id="back">
-    <ion-icon [routerLink]="['/home']" id="back" name="log-out-outline"></ion-icon>
+    <ion-icon [routerLink]="['/home']" id="back" (click)="authService.SignOut()"name="log-out-outline"></ion-icon>
   </div>
   <div id="strong">
     <strong>Moje zadania</strong>
@@ -16,7 +16,7 @@
           <ion-label>
             <h2>{{task.title}}</h2>
             <p>{{task.deadline}}</p>
-            <ion-button (click)="getDetails()" expand="block" fill="clear" shape="round">
+            <ion-button (click)="showDetails(task)"  expand="block" fill="clear" shape="round">
               <ion-icon name="arrow-redo-outline"></ion-icon>
             </ion-button>
           </ion-label>

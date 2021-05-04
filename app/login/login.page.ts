@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
-import { User } from '../models/user';
+import { User } from '../shared/user';
+import { AuthenticationService } from "../shared/authServices";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,9 @@ export class LoginPage implements OnInit {
     private toastController: ToastController,
     private loadingController: LoadingController,
     private angularFireAuth: AngularFireAuth,
-    private navController: NavController) { }
+    private navController: NavController,
+    private authServices: AuthenticationService,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -27,11 +31,11 @@ export class LoginPage implements OnInit {
       (await loader).present();
 
       try {
-        await this.angularFireAuth.signInWithEmailAndPassword(user.email, user.password)
-        .then(data => {
-          this.navController.navigateRoot("tasks-list");
+        await this.authServices.LogIn(user.email, user.password)
+        .then((res) => {
+          this.router.navigate(["tasks-list"]);
         })
-
+        
       } catch(err) {
         var errorCode = err.code;
         var errorMessage = err.message;
@@ -75,4 +79,5 @@ export class LoginPage implements OnInit {
     })
     .then(toastData => toastData.present()); 
   }
+  
 }

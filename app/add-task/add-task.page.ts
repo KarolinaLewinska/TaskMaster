@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
-import { Task } from "../models/task"
-
+import firebase from 'firebase';
+import { Task } from "../shared/task"
 
 @Component({
   selector: 'app-add-task',
@@ -11,7 +11,6 @@ import { Task } from "../models/task"
 })
 
 export class AddTaskPage implements OnInit {
-  // myDate: String = new Date().toISOString();
   task = {} as Task;
   constructor(
     private toastController: ToastController,
@@ -23,6 +22,7 @@ export class AddTaskPage implements OnInit {
 
   ngOnInit() {
   }
+
   async addTask(task: Task) {
     if (this.validateForms()) {
       let loader = this.loadingController.create({
@@ -31,13 +31,15 @@ export class AddTaskPage implements OnInit {
       (await loader).present();
 
       try {
-        this.angularFirestore.collection("tasks").add(task);
+        let currentUser = firebase.auth().currentUser;
+        this.angularFirestore.collection('users')
+        .doc(currentUser.uid).collection("tasks").add(task);
 
       } catch(err) {
         this.showToast(err);
       }
       (await loader).dismiss();
-      this.navController.navigateRoot("tasks-list");
+      this.navController.navigateBack("tasks-list");
     }
   }
 

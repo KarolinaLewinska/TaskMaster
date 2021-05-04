@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
-import { User } from "../models/user"
+import { User } from "../shared/user"
+import { AuthenticationService } from "../shared/authServices";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -10,11 +12,14 @@ import { User } from "../models/user"
 })
 export class RegisterPage implements OnInit {
   user = {} as User;
+
   constructor(
     private toastController: ToastController,
     private loadingController: LoadingController,
     private angularFireAuth: AngularFireAuth,
-    private navController: NavController) { }
+    private navController: NavController,
+    private authServices: AuthenticationService,
+    private router: Router) { }
     
   ngOnInit() {
   }
@@ -27,12 +32,13 @@ export class RegisterPage implements OnInit {
       (await loader).present();
 
       try {
-        await this.angularFireAuth
-        .createUserWithEmailAndPassword(user.email, user.password)
-        .then(data => {
-          this.navController.navigateBack("login");
-        });
-
+        // await this.angularFireAuth
+        // .createUserWithEmailAndPassword(user.email, user.password)
+        // .then(data => {
+        //   this.navController.navigateBack("login");
+        // });
+        await this.authServices.Register(user.email, user.password);
+        
       } catch(err) {
         var errorCode = err.code;
         var errorMessage = err.message;
