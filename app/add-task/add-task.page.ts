@@ -42,6 +42,7 @@ export class AddTaskPage implements OnInit {
       this.navController.navigateBack("tasks-list");
     }
   }
+  
 
   validateForms() {
     if(!this.task.title) {

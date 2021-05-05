@@ -38,7 +38,8 @@ export class TasksListPage implements OnInit {
           this.tasks = data.map(m => {
             return {
               id: m.payload.doc.id,
-              deadline: m.payload.doc.data()["deadline"],
+              deadlineDate: m.payload.doc.data()["deadlineDate"].split('T')[0],
+              deadlineTime: m.payload.doc.data()["deadlineTime"].split('T')[1].substring(0,5),
               title: m.payload.doc.data()["title"],
               description: m.payload.doc.data()["description"],
               category: m.payload.doc.data()["category"],
@@ -82,5 +83,7 @@ export class TasksListPage implements OnInit {
       };
       this.navController.navigateForward('task-details', navigationExtras);
   }
+
+ 
 
 }
