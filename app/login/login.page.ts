@@ -32,9 +32,7 @@ export class LoginPage implements OnInit {
 
       try {
         await this.authServices.LogIn(user.email, user.password)
-        .then((res) => {
-          this.router.navigate(["tasks-list"]);
-        })
+        
         
       } catch(err) {
         var errorCode = err.code;
@@ -49,7 +47,7 @@ export class LoginPage implements OnInit {
           this.showToast(errorMessage);
         }
         else if (user.email || user.password) {
-          errorMessage="Nieprawidłowy format adresu email lub hasła!"
+          errorMessage="Nieprawidłowy adres email lub hasło!"
           this.showToast(errorMessage);
         }
         else {

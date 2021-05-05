@@ -13,7 +13,11 @@
   <ion-list>
     <ion-item>
       <ion-label>Termin wykonania</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="task.deadline"></ion-datetime>
+      <ion-datetime pickerFormat="YYYY-MM-DD" displayFormat="YYYY-MM-DD"[(ngModel)]="task.deadlineDate"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Godzina wykonania</ion-label>
+      <ion-datetime pickerFormat="HH:mm" displayFormat="HH:mm"[(ngModel)]="task.deadlineTime"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label color="black">Tytuł</ion-label>
