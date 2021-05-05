@@ -12,6 +12,7 @@
     text-align: center;
     font-size: 20px;
     color: #8C0000;
+    margin-bottom: 10px;
 }
 #toolbar {
     margin-left: 10px;
@@ -22,4 +23,11 @@ ion-button {
 #addButton {
     height: 35px;
     width: 200px;
+}
+#priorityLabel {
+    font-weight: normal;
+    font-size:32px;
+}
+ion-label {
+    font-weight: normal;
 }

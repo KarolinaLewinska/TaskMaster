@@ -13,11 +13,11 @@
   <ion-list>
     <ion-item>
       <ion-label>Termin wykonania</ion-label>
-      <ion-datetime pickerFormat="YYYY-MM-DD" displayFormat="YYYY-MM-DD"[(ngModel)]="task.deadlineDate"></ion-datetime>
+      <ion-datetime  max="2099-10-31" required pickerFormat="YYYY-MM-DD" displayFormat="YYYY-MM-DD" [(ngModel)]="task.deadlineDate"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Godzina wykonania</ion-label>
-      <ion-datetime pickerFormat="HH:mm" displayFormat="HH:mm"[(ngModel)]="task.deadlineTime"></ion-datetime>
+      <ion-datetime required pickerFormat="HH:mm" displayFormat="HH:mm"[(ngModel)]="task.deadlineTime"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label color="black">Tytuł</ion-label>
@@ -32,15 +32,16 @@
       <ion-select value="Praca" okText="Wybierz" cancelText="Anuluj" [(ngModel)]="task.category">
         <ion-select-option value="Praca">Praca</ion-select-option>
         <ion-select-option value="Dom">Dom</ion-select-option>
+        <ion-select-option value="Zdrowie">Zdrowie</ion-select-option>
         <ion-select-option value="Rozwój osobisty">Rozwój osobisty</ion-select-option>
         <ion-select-option value="Nawyki">Nawyki</ion-select-option>
         <ion-select-option value="Inne">Inne</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-radio-group value="Pilne" [(ngModel)]="task.priority">
-      <ion-list-header>
+      <ion-item>
         <ion-label>Priorytet</ion-label>
-      </ion-list-header>
+      </ion-item>
       <ion-item>
         <ion-label>Pilne</ion-label>
         <ion-radio slot="end" value="Pilne"></ion-radio>

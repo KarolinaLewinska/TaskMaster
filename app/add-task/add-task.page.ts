@@ -45,6 +45,14 @@ export class AddTaskPage implements OnInit {
   
 
   validateForms() {
+    if(!this.task.deadlineDate) {
+      this.showToast("Termin wykonania jest wymagany!")
+      return false;
+    }
+    if(!this.task.deadlineTime) {
+      this.showToast("Godzina wykonania jest wymagana!")
+      return false;
+    }
     if(!this.task.title) {
       this.showToast("Tytuł zadania jest wymagany!")
       return false;
@@ -53,6 +61,15 @@ export class AddTaskPage implements OnInit {
       this.showToast("Opis zadania jest wymagany!")
       return false;
     }
+    if(!this.task.category) {
+      this.showToast("Kategoria zadania jest wymagana!")
+      return false;
+    }
+    if(!this.task.priority) {
+      this.showToast("Priorytet zadania jest wymagany!")
+      return false;
+    }
+    
     return true;
   }
 
