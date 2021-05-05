@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <img src="assets\icon\logo2.png" width="120" height="60">
+    <img id="toolbar" src="assets\icon\logo2.png" width="120" height="60">
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -12,7 +12,7 @@
 </div>
 <ion-list>
   <ion-item>
-    <ion-label>Data wykonania</ion-label>
+    <ion-label>Termin wykonania</ion-label>
     <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="task.deadline"></ion-datetime>
   </ion-item>
   <ion-item>

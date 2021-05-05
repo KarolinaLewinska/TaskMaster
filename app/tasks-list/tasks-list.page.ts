@@ -26,7 +26,7 @@ export class TasksListPage implements OnInit {
 
   async getTasks() {
     let loader = this.loadingController.create({
-      message: "Pobieranie listy zadań, proszę czekać..."
+      message: "Proszę czekać..."
     });
     (await loader).present();
 
@@ -56,7 +56,7 @@ export class TasksListPage implements OnInit {
   async deleteTask(id: string) {
     let currentUser = firebase.auth().currentUser;
     let loader = this.loadingController.create({
-      message: "Trwa usuwanie, proszę czekać..."
+      message: "Proszę czekać..."
     });
     (await loader).present();
       

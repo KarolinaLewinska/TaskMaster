@@ -9,10 +9,17 @@
   line-height: 40px;
   color: #8C0000;
 }
-#mainPage p {
+p, #p {
   font-size: 16px;
   line-height: 25px;
   color: #4C4C5A;
-  margin: 20;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#toolbar {
+  margin-left: 10px;
+}
+ion-button {
+  font-weight: bold;
 }
 

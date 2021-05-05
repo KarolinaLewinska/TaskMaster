@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar id="toolbar">
-    <img src="assets\icon\logo2.png" width="120" height="60">
+  <ion-toolbar>
+    <img id="toolbar" src="assets\icon\logo2.png" width="120" height="60">
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -21,16 +21,20 @@
     <ion-row>
       <ion-col size="12">
         <ion-item>
-          <ion-label position="fixed">Email</ion-label>
-          <ion-input type="email" [(ngModel)]="user.email" placeholder="..." required></ion-input>
+          <ion-label id="icon" position="fixed">
+            <ion-icon id="icon"  name="at-circle"></ion-icon>
+          </ion-label>
+          <ion-input type="email" [(ngModel)]="user.email" placeholder="Podaj email" required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="12">
         <ion-item>
-          <ion-label position="fixed">Hasło</ion-label>
-          <ion-input type="password" [(ngModel)]="user.password" placeholder="..." required></ion-input>
+          <ion-label id="icon" position="fixed">
+            <ion-icon id="icon" name="lock-open"></ion-icon>
+          </ion-label>
+          <ion-input type="password" [(ngModel)]="user.password" placeholder="Podaj hasło" required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>

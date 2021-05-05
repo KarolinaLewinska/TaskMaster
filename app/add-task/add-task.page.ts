@@ -26,7 +26,7 @@ export class AddTaskPage implements OnInit {
   async addTask(task: Task) {
     if (this.validateForms()) {
       let loader = this.loadingController.create({
-        message: "Trwa dodawanie zadania, proszę czekać..."
+        message: "Proszę czekać..."
       });
       (await loader).present();
 

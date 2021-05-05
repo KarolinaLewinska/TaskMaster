@@ -1,7 +1,7 @@
 import { IonDatetime } from "@ionic/angular";
 
 export interface Task {
-    deadline: IonDatetime;
+    deadline: Date;
     title: string;
     description: string;
     category: string;

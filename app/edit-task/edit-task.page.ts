@@ -25,7 +25,7 @@ export class EditTaskPage implements OnInit {
     }
 
   ngOnInit() {
-    this.getTask(this.id);
+    
   }
 
   async getTask(id: string) {
@@ -37,7 +37,7 @@ export class EditTaskPage implements OnInit {
     try {
       let currentUser = firebase.auth().currentUser;
       if(currentUser){
-				this.angularFirestore.collection("users").doc(currentUser.uid).collection('tasks').doc(id).valueChanges()
+				this.angularFirestore.collection("users").doc(currentUser.uid).collection('tasks').doc(this.id).valueChanges()
         .subscribe(data => {
           this.task = data.map(m => {
             return {
@@ -60,7 +60,7 @@ export class EditTaskPage implements OnInit {
     let currentUser = firebase.auth().currentUser;
     if (this.validateForms()) {
       let loader = this.loadingController.create({
-        message: "Trwa aktualizowanie zadania, proszę czekać..."
+        message: "Proszę czekać..."
       });
       (await loader).present();
 

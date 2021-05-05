@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
   async login(user: User) {
     if (this.validateForms()) {
       let loader = this.loadingController.create({
-        message: "Trwa logowanie, proszę czekać..."
+        message: "Proszę czekać..."
       });
       (await loader).present();
 

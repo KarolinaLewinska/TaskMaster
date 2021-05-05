@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <img src="assets\icon\logo2.png" width="120" height="60">
+    <img id="toolbar" src="assets\icon\logo2.png" width="120" height="60">
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -12,16 +12,16 @@
   </div>
   <ion-list>
     <ion-item>
-      <ion-label>Data wykonania</ion-label>
+      <ion-label>Termin wykonania</ion-label>
       <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="task.deadline"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label color="black">Tytuł</ion-label>
-      <ion-input placeholder="..." required [(ngModel)]="task.title"></ion-input>
+      <ion-input required [(ngModel)]="task.title"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Opis</ion-label>
-      <ion-textarea placeholder="..." required [(ngModel)]="task.description"></ion-textarea>
+      <ion-textarea required [(ngModel)]="task.description"></ion-textarea>
     </ion-item>
     <ion-item>
       <ion-label>Kategoria</ion-label>
@@ -54,9 +54,8 @@
   <ion-grid>
     <ion-row>
       <ion-col class="ion-text-center">
-        <ion-button color="danger" size="default" (click)="addTask(task)">
+        <ion-button id="addButton" color="danger" (click)="addTask(task)">
           Dodaj
-          <ion-icon id="addIcon" name="add-circle-outline"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>

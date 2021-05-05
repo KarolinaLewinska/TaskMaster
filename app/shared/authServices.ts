@@ -14,10 +14,10 @@ export class AuthenticationService {
   public loggedin: boolean;
 
   constructor(
-    public afStore: AngularFirestore,
+    //public afStore: AngularFirestore,
     public angularFireAuth: AngularFireAuth,
     public router: Router,
-    public ngZone: NgZone,
+    //public ngZone: NgZone,
     public navController: NavController) {
     this.angularFireAuth.authState.subscribe((user) => {
       if (user) {

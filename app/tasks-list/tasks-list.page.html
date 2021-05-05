@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <img src="assets\icon\logo2.png" width="120" height="60">
+    <img id="toolbar" src="assets\icon\logo2.png" width="120" height="60">
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <div id="back">
-    <ion-icon [routerLink]="['/home']" id="back" (click)="authService.SignOut()"name="log-out-outline"></ion-icon>
+    <ion-icon [routerLink]="['/home']" id="back" (click)="authService.SignOut()" name="log-out-outline"></ion-icon>
   </div>
   <div id="strong">
     <strong>Moje zadania</strong>
@@ -33,13 +33,11 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-  <div id="addButton">
-    <ion-fab vertical="botton" horizontal="end" slot="fixed" >
-      <ion-fab-button [routerLink]="['/add-task']" color="danger">
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-  </div>
+  <ion-fab>
+    <ion-fab-button id="addButton" [routerLink]="['/add-task']" color="danger">
+      <ion-icon  name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
 
 

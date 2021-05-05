@@ -1,14 +1,17 @@
 #back {
     color:#800000;
     font-size:50px;
+    margin-top: 5px;
+    margin-left: 5px;
 }
 #login {
     color:#800000;
     font-size:50px;
 }
 #logIcon {
-    margin-right: 1%;
+    margin-right: 5px;
     text-align: right;
+    margin-top: 7px;
 }
 #strong {
     margin-top:15%;
@@ -21,4 +24,17 @@
     text-align: center;
     position: relative;
     top: 10%;
+}
+#toolbar {
+    margin-left: 10px;
+}
+ion-button {
+    font-weight: bold;
+}
+ion-input {
+    margin-left:-20px;
+}
+#icon {
+    font-size: 35px; 
+    color:#707070;
 }

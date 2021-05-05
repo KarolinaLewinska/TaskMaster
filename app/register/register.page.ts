@@ -27,7 +27,7 @@ export class RegisterPage implements OnInit {
   async register(user: User) {
     if (this.validateForms()) {
       let loader = this.loadingController.create({
-          message: "Trwa rejestracja, proszę czekać..."
+          message: "Proszę czekać..."
       });
       (await loader).present();
 
