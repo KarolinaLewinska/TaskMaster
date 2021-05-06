@@ -3,25 +3,21 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { NavigationExtras } from '@angular/router';
 import { LoadingController, ToastController, NavController } from '@ionic/angular';
 import firebase from 'firebase';
-import { AuthenticationService } from "../shared/authServices";
 
 @Component({
   selector: 'app-tasks-list',
   templateUrl: './tasks-list.page.html',
   styleUrls: ['./tasks-list.page.scss'],
 })
-export class TasksListPage  {
+export class TasksListPage implements OnInit  {
   tasks: any;
   constructor(
     private loadingController: LoadingController,
     private toastController: ToastController,
     private angularFirestore: AngularFirestore,
-    private authService: AuthenticationService,
-    private navController: NavController
-    ) { }
+    private navController: NavController) { }
 
-
-    ionViewWillEnter() {
+    ngOnInit() {
       this.getTasks();
     }
 
@@ -84,5 +80,4 @@ export class TasksListPage  {
       };
       this.navController.navigateForward('task-details', navigationExtras);
   }
-
 }

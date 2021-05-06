@@ -16,10 +16,7 @@ export class RegisterPage implements OnInit {
   constructor(
     private toastController: ToastController,
     private loadingController: LoadingController,
-    private angularFireAuth: AngularFireAuth,
-    private navController: NavController,
-    private authServices: AuthenticationService,
-    private router: Router) { }
+    private authServices: AuthenticationService) { }
     
   ngOnInit() {
   }
@@ -32,11 +29,6 @@ export class RegisterPage implements OnInit {
       (await loader).present();
 
       try {
-        // await this.angularFireAuth
-        // .createUserWithEmailAndPassword(user.email, user.password)
-        // .then(data => {
-        //   this.navController.navigateBack("login");
-        // });
         await this.authServices.Register(user.email, user.password);
         
       } catch(err) {
@@ -64,11 +56,11 @@ export class RegisterPage implements OnInit {
   }
 
   validateForms() {
-    if(!this.user.email) {
+    if (!this.user.email) {
       this.showToast("Adres email jest wymagany!")
       return false;
     }
-    if(!this.user.password) {
+    if (!this.user.password) {
       this.showToast("Hasło jest wymagane!")
       return false;
     }

@@ -15,10 +15,7 @@ export class LoginPage implements OnInit {
   constructor(
     private toastController: ToastController,
     private loadingController: LoadingController,
-    private angularFireAuth: AngularFireAuth,
-    private navController: NavController,
-    private authServices: AuthenticationService,
-    private router: Router) { }
+    private authServices: AuthenticationService) { }
 
   ngOnInit() {
   }
@@ -32,7 +29,6 @@ export class LoginPage implements OnInit {
 
       try {
         await this.authServices.LogIn(user.email, user.password)
-        
         
       } catch(err) {
         var errorCode = err.code;
@@ -59,11 +55,11 @@ export class LoginPage implements OnInit {
   }
   
   validateForms() {
-    if(!this.user.email) {
+    if (!this.user.email) {
       this.showToast("Adres email jest wymagany!")
       return false;
     }
-    if(!this.user.password) {
+    if (!this.user.password) {
       this.showToast("Hasło jest wymagane!")
       return false;
     }
@@ -77,5 +73,4 @@ export class LoginPage implements OnInit {
     })
     .then(toastData => toastData.present()); 
   }
-  
 }

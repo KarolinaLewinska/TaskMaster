@@ -5,7 +5,6 @@ import { LoadingController, NavController, ToastController, NavParams } from '@i
 import firebase from 'firebase';
 import { Task } from '../shared/task'
 
-
 @Component({
   selector: 'app-edit-task',
   templateUrl: './edit-task.page.html',
@@ -14,6 +13,7 @@ import { Task } from '../shared/task'
 export class EditTaskPage implements OnInit {
   task = {} as Task;
   id: any;
+  
   constructor (
     private activatedRoute: ActivatedRoute,
     private loadingController: LoadingController,
@@ -74,27 +74,27 @@ export class EditTaskPage implements OnInit {
 
   }
   validateForms() {
-    if(!this.task.deadlineDate) {
+    if (!this.task.deadlineDate) {
       this.showToast("Termin wykonania jest wymagany!")
       return false;
     }
-    if(!this.task.deadlineTime) {
+    if (!this.task.deadlineTime) {
       this.showToast("Godzina wykonania jest wymagana!")
       return false;
     }
-    if(!this.task.title) {
+    if (!this.task.title) {
       this.showToast("Tytuł zadania jest wymagany!")
       return false;
     }
-    if(!this.task.description) {
+    if (!this.task.description) {
       this.showToast("Opis zadania jest wymagany!")
       return false;
     }
-    if(!this.task.category) {
+    if (!this.task.category) {
       this.showToast("Kategoria zadania jest wymagana!")
       return false;
     }
-    if(!this.task.priority) {
+    if (!this.task.priority) {
       this.showToast("Priorytet zadania jest wymagany!")
       return false;
     }
