@@ -20,42 +20,38 @@ export class EditTaskPage implements OnInit {
     private angularFirestore: AngularFirestore,
     private toastController: ToastController,
     private navController: NavController,
-    private navParams: NavParams) { 
+    // private navParams: NavParams
+    ) { 
       this.id = this.activatedRoute.snapshot.paramMap.get("id");
     }
 
   ngOnInit() {
+    // this.getTask(this.id)
+  }
+
+  // async getTask(id: string) {
+  //   let loader = this.loadingController.create({
+  //     message: "Proszę czekać..." 
+  //   });
+
+  //   (await loader).present();
     
-  }
-
-  async getTask(id: string) {
-    let loader = this.loadingController.create({
-      message: "Proszę czekać..."
-    });
-
-    (await loader).present();
-    try {
-      let currentUser = firebase.auth().currentUser;
-      if(currentUser){
-				this.angularFirestore.collection("users").doc(currentUser.uid).collection('tasks').doc(this.id).valueChanges()
-        .subscribe(data => {
-          this.task = data.map(m => {
-            return {
-              id: m.payload.doc.id,
-              deadline: m.payload.doc.data()["deadline"],
-              title: m.payload.doc.data()["title"],
-              description: m.payload.doc.data()["description"],
-              category: m.payload.doc.data()["category"],
-              priority: m.payload.doc.data()["priority"],
-            };
-          })
-        });
-			}
-    } 
-    catch(err) {
-
-    }
-  }
+  //     // let currentUser = firebase.auth().currentUser;
+	// 			this.angularFirestore
+  //       // .collection("users").doc(currentUser.uid).collection('tasks')
+  //       .doc("tasks/"+id).valueChanges()
+  //       .subscribe(data => {
+  //             this.task.deadlineDate = data["deadlineDate"];
+  //             this.task.deadlineTime = data["deadlineTime"];
+  //             this.task.title = data["title"];
+  //             this.task.description = data["description"];
+  //             this.task.category = data["category"];
+  //             this.task.priority = data["priority"];
+              
+  //     });
+  //     (await loader).dismiss();
+  // }
+  
   async editTask(task: Task) {
     let currentUser = firebase.auth().currentUser;
     if (this.validateForms()) {
@@ -65,7 +61,9 @@ export class EditTaskPage implements OnInit {
       (await loader).present();
 
       try {
-        await this.angularFirestore.collection("users").doc(currentUser.uid).collection('tasks').doc(this.id).update(task);
+        await this.angularFirestore.collection("users")
+        .doc(currentUser.uid).collection('tasks')
+        .doc(this.id).update(task);
         
       } catch(err) {
         this.showToast(err);
@@ -76,6 +74,14 @@ export class EditTaskPage implements OnInit {
 
   }
   validateForms() {
+    if(!this.task.deadlineDate) {
+      this.showToast("Termin wykonania jest wymagany!")
+      return false;
+    }
+    if(!this.task.deadlineTime) {
+      this.showToast("Godzina wykonania jest wymagana!")
+      return false;
+    }
     if(!this.task.title) {
       this.showToast("Tytuł zadania jest wymagany!")
       return false;
@@ -84,6 +90,15 @@ export class EditTaskPage implements OnInit {
       this.showToast("Opis zadania jest wymagany!")
       return false;
     }
+    if(!this.task.category) {
+      this.showToast("Kategoria zadania jest wymagana!")
+      return false;
+    }
+    if(!this.task.priority) {
+      this.showToast("Priorytet zadania jest wymagany!")
+      return false;
+    }
+    
     return true;
   }
   showToast(message: string) {

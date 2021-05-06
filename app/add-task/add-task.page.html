@@ -13,11 +13,11 @@
   <ion-list>
     <ion-item>
       <ion-label>Termin wykonania</ion-label>
-      <ion-datetime  max="2099-10-31" required pickerFormat="YYYY-MM-DD" displayFormat="YYYY-MM-DD" [(ngModel)]="task.deadlineDate"></ion-datetime>
+      <ion-datetime max="2099-12-31" pickerFormat="YYYY-MM-DD" displayFormat="YYYY-MM-DD"[(ngModel)]="task.deadlineDate"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Godzina wykonania</ion-label>
-      <ion-datetime required pickerFormat="HH:mm" displayFormat="HH:mm"[(ngModel)]="task.deadlineTime"></ion-datetime>
+      <ion-datetime pickerFormat="HH:mm" displayFormat="HH:mm"[(ngModel)]="task.deadlineTime"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label color="black">Tytuł</ion-label>

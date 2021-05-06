@@ -5,59 +5,64 @@
 </ion-header>
 <ion-content>
   <div id="back">
-    <ion-icon [routerLink]="['/tasks-list']" id="back" name="arrow-back-outline"></ion-icon>
-</div>
-<div id="strong">
-  <strong>Edytuj zadanie</strong>
-</div>
-<ion-list>
-  <ion-item>
-    <ion-label>Termin wykonania</ion-label>
-    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="task.deadline"></ion-datetime>
-  </ion-item>
-  <ion-item>
-    <ion-label color="black">Tytuł</ion-label>
-    <ion-input placeholder="..." required [(ngModel)]="task.title"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Opis</ion-label>
-    <ion-textarea placeholder="..." required [(ngModel)]="task.description"></ion-textarea>
-  </ion-item>
-  <ion-item>
-    <ion-label>Kategoria</ion-label>
-    <ion-select value="Praca" okText="Wybierz" cancelText="Anuluj" [(ngModel)]="task.category">
-      <ion-select-option value="Praca">Praca</ion-select-option>
-      <ion-select-option value="Dom">Dom</ion-select-option>
-      <ion-select-option value="Rozwój osobisty">Rozwój osobisty</ion-select-option>
-      <ion-select-option value="Nawyki">Nawyki</ion-select-option>
-      <ion-select-option value="Inne">Inne</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-radio-group value="Pilne" [(ngModel)]="task.priority">
-    <ion-list-header>
-      <ion-label>Priorytet</ion-label>
-    </ion-list-header>
+      <ion-icon [routerLink]="['/tasks-list']" id="back" name="arrow-back-outline"></ion-icon>
+  </div>
+  <div id="strong">
+    <strong>Edytuj zadanie</strong>
+  </div>
+  <ion-list>
     <ion-item>
-      <ion-label>Pilne</ion-label>
-      <ion-radio slot="end" value="Pilne"></ion-radio>
+      <ion-label>Termin wykonania</ion-label>
+      <ion-datetime max="2099-12-31" [(ngModel)]="task.deadlineDate" pickerFormat="YYYY-MM-DD" displayFormat="YYYY-MM-DD" ></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label>Ważne</ion-label>
-      <ion-radio slot="end" value="Ważne"></ion-radio>
+      <ion-label>Godzina wykonania</ion-label>
+      <ion-datetime [(ngModel)]="task.deadlineTime" pickerFormat="HH:mm" displayFormat="HH:mm"></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label>Dodatkowe</ion-label>
-      <ion-radio slot="end" value="Dodatkowe"></ion-radio>
+      <ion-label color="black">Tytuł</ion-label>
+      <ion-input [(ngModel)]="task.title" required ></ion-input>
     </ion-item>
-  </ion-radio-group>
-</ion-list>
-<ion-grid>
-  <ion-row>
-    <ion-col class="ion-text-center">
-      <ion-button color="danger" size="default" (click)="editTask(task)">
-        Zatwierdź
-      </ion-button>
-    </ion-col>
-  </ion-row>
-</ion-grid>  
+    <ion-item>
+      <ion-label>Opis</ion-label>
+      <ion-textarea [(ngModel)]="task.description" required></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Kategoria</ion-label>
+      <ion-select [(ngModel)]="task.category" value="Praca" okText="Wybierz" cancelText="Anuluj" >
+        <ion-select-option value="Praca">Praca</ion-select-option>
+        <ion-select-option value="Dom">Dom</ion-select-option>
+        <ion-select-option value="Zdrowie">Zdrowie</ion-select-option>
+        <ion-select-option value="Rozwój osobisty">Rozwój osobisty</ion-select-option>
+        <ion-select-option value="Nawyki">Nawyki</ion-select-option>
+        <ion-select-option value="Inne">Inne</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-radio-group [(ngModel)]="task.priority" value="Pilne" >
+      <ion-item>
+        <ion-label>Priorytet</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Pilne</ion-label>
+        <ion-radio slot="end" value="Pilne"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ważne</ion-label>
+        <ion-radio slot="end" value="Ważne"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Dodatkowe</ion-label>
+        <ion-radio slot="end" value="Dodatkowe"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button id="addButton" color="danger" (click)="editTask(task)" >
+          Edytuj
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
 </ion-content>

@@ -10,7 +10,7 @@ import { AuthenticationService } from "../shared/authServices";
   templateUrl: './tasks-list.page.html',
   styleUrls: ['./tasks-list.page.scss'],
 })
-export class TasksListPage implements OnInit {
+export class TasksListPage  {
   tasks: any;
   constructor(
     private loadingController: LoadingController,
@@ -20,9 +20,10 @@ export class TasksListPage implements OnInit {
     private navController: NavController
     ) { }
 
-  ngOnInit() {
-    this.getTasks();
-  }
+
+    ionViewWillEnter() {
+      this.getTasks();
+    }
 
   async getTasks() {
     let loader = this.loadingController.create({
@@ -83,7 +84,5 @@ export class TasksListPage implements OnInit {
       };
       this.navController.navigateForward('task-details', navigationExtras);
   }
-
- 
 
 }
