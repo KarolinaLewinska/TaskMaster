@@ -19,38 +19,35 @@ export class EditTaskPage implements OnInit {
     private loadingController: LoadingController,
     private angularFirestore: AngularFirestore,
     private toastController: ToastController,
-    private navController: NavController,
-    // private navParams: NavParams
-    ) { 
+    private navController: NavController) { 
       this.id = this.activatedRoute.snapshot.paramMap.get("id");
     }
 
   ngOnInit() {
-    // this.getTask(this.id)
+    this.getTask(this.id)
   }
 
-  // async getTask(id: string) {
-  //   let loader = this.loadingController.create({
-  //     message: "Proszę czekać..." 
-  //   });
+  async getTask(id: string) {
+    let loader = this.loadingController.create({
+      message: "Proszę czekać..." 
+    });
 
-  //   (await loader).present();
+    (await loader).present();
     
-  //     // let currentUser = firebase.auth().currentUser;
-	// 			this.angularFirestore
-  //       // .collection("users").doc(currentUser.uid).collection('tasks')
-  //       .doc("tasks/"+id).valueChanges()
-  //       .subscribe(data => {
-  //             this.task.deadlineDate = data["deadlineDate"];
-  //             this.task.deadlineTime = data["deadlineTime"];
-  //             this.task.title = data["title"];
-  //             this.task.description = data["description"];
-  //             this.task.category = data["category"];
-  //             this.task.priority = data["priority"];
-              
-  //     });
-  //     (await loader).dismiss();
-  // }
+      let currentUser = firebase.auth().currentUser;
+      this.angularFirestore
+      .collection("users").doc(currentUser.uid).collection('tasks')
+      .doc(id).valueChanges()
+      .subscribe(data => {
+            this.task.deadlineDate = data["deadlineDate"];
+            this.task.deadlineTime = data["deadlineTime"];
+            this.task.title = data["title"];
+            this.task.description = data["description"];
+            this.task.category = data["category"];
+            this.task.priority = data["priority"];  
+      });
+      (await loader).dismiss();
+  }
   
   async editTask(task: Task) {
     let currentUser = firebase.auth().currentUser;
@@ -68,6 +65,7 @@ export class EditTaskPage implements OnInit {
       } catch(err) {
         this.showToast(err);
       }
+      
       (await loader).dismiss();
       this.navController.navigateRoot("tasks-list");
     }

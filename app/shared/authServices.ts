@@ -1,9 +1,7 @@
 import { Injectable, NgZone } from "@angular/core";
-import { User } from "./user";
 import { Router } from "@angular/router";
 import { AngularFireAuth } from "@angular/fire/auth";
-import { AngularFirestore, AngularFirestoreDocument } from "@angular/fire/firestore";
-import { LoadingController, NavController, ToastController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 @Injectable({
   providedIn: "root",
@@ -14,10 +12,8 @@ export class AuthenticationService {
   public loggedin: boolean;
 
   constructor(
-    //public afStore: AngularFirestore,
     public angularFireAuth: AngularFireAuth,
     public router: Router,
-    //public ngZone: NgZone,
     public navController: NavController) {
     this.angularFireAuth.authState.subscribe((user) => {
       if (user) {
@@ -37,7 +33,6 @@ export class AuthenticationService {
     .then((res) => {
       this.router.navigate(["tasks-list"]);
     })
-    
   }
 
   Register(email, password) {
@@ -56,41 +51,5 @@ export class AuthenticationService {
     else {
       return false;
     }
-  }
-
-  // AuthLogin(provider) {
-  //   return this.angularFireAuth
-  //     .signInWithPopup(provider)
-  //     .then((result) => {
-  //       this.ngZone.run(() => {
-  //         this.router.navigate(["tasks-list"]);
-  //       });
-  //       this.SetUserData(result.user);
-  //     })
-  //     .catch((error) => {
-  //       window.alert(error);
-  //     });
-  // }
-
-  // // Store user in localStorage
-  // SetUserData(user) {
-  //   const userRef: AngularFirestoreDocument<any> = this.afStore.doc(
-  //     `users/${user.uid}`
-  //   );
-  //   const userData: User = {
-  //     uid: user.uid,
-  //     email: user.email,
-  //     password: user.password
-  //   };
-  //   return userRef.set(userData, {
-  //     merge: true,
-  //   });
-  // }
-  SignOut() {
-    this.loggedin = false;
-    return this.angularFireAuth.signOut().then(() => {
-      localStorage.removeItem("user");
-      this.router.navigate(["home"]);
-    });
   }
 }

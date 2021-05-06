@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { LoadingController, NavController, ToastController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { User } from "../shared/user"
 import { AuthenticationService } from "../shared/authServices";
-import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-register',

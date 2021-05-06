@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { NavigationExtras } from '@angular/router';
 import { LoadingController, ToastController, NavController } from '@ionic/angular';
 import firebase from 'firebase';
+import { AngularFireAuth } from "@angular/fire/auth";
 
 @Component({
   selector: 'app-tasks-list',
@@ -15,7 +16,8 @@ export class TasksListPage implements OnInit  {
     private loadingController: LoadingController,
     private toastController: ToastController,
     private angularFirestore: AngularFirestore,
-    private navController: NavController) { }
+    private navController: NavController,
+    private angularFireAuth: AngularFireAuth) { }
 
     ngOnInit() {
       this.getTasks();
@@ -72,12 +74,19 @@ export class TasksListPage implements OnInit  {
     .then(toastData => toastData.present()); 
   }
 
-  showDetails(taskDetails){
+  showDetails(taskDetails) {
       let navigationExtras: NavigationExtras = {
         queryParams: {
           task: taskDetails
         }
       };
       this.navController.navigateForward('task-details', navigationExtras);
+  }
+  
+  SignOut() {
+    return this.angularFireAuth.signOut().then(() => {
+      localStorage.removeItem("user");
+      this.navController.navigateBack("home");
+    });
   }
 }
