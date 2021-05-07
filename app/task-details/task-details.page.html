@@ -10,35 +10,38 @@
   <div id="strong">
     <strong>Szczegóły</strong>
   </div>
+  <div id="detIcon">
+    <ion-icon width="120" height="60" id="detIcon" name="search"></ion-icon>
+  </div>
   <ion-grid>
     <ion-row>
       <ion-col size="12">
-        Termin wykonania: {{task.deadlineDate}}
+        <strong>Termin wykonania:</strong> {{task.deadlineDate}}
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="12">
-        Godzina wykonania: {{task.deadlineTime}}
+        <strong>Godzina wykonania:</strong> {{task.deadlineTime}}
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="12">
-        Tytuł: {{task.title}}
+        <strong>Tytuł:</strong> {{task.title}}
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="12">
-        Opis: {{task.description}}
+        <strong>Opis:</strong> {{task.description}}
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="12">
-        Kategoria: {{task.category}}
+        <strong>Kategoria:</strong> {{task.category}}
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="12">
-        Priorytet: {{task.priority}}
+        <strong>Priorytet:</strong> {{task.priority}}
       </ion-col>
     </ion-row>
   </ion-grid>

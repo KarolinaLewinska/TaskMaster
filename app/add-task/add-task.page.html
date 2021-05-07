@@ -29,8 +29,9 @@
     </ion-item>
     <ion-item>
       <ion-label>Kategoria</ion-label>
-      <ion-select value="Praca" okText="Wybierz" cancelText="Anuluj" [(ngModel)]="task.category">
+      <ion-select interface="popover" [(ngModel)]="task.category">
         <ion-select-option value="Praca">Praca</ion-select-option>
+        <ion-select-option value="Edukacja">Edukacja</ion-select-option>
         <ion-select-option value="Dom">Dom</ion-select-option>
         <ion-select-option value="Zdrowie">Zdrowie</ion-select-option>
         <ion-select-option value="Rozwój osobisty">Rozwój osobisty</ion-select-option>

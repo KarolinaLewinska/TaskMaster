@@ -8,14 +8,22 @@
     margin-left: 10%;
     font-size: 30px;
 }
+#editButton {
+    height: 35px;
+    width: 200px;
+}
 #strong {
     text-align: center;
     font-size: 20px;
     color: #8C0000;
+    margin-bottom: 20px;
 }
 #toolbar {
     margin-left: 10px;
 }
 ion-button {
+    font-weight: bold;
+}
+ion-label {
     font-weight: bold;
 }

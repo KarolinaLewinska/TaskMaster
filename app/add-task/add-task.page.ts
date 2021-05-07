@@ -78,3 +78,4 @@ export class AddTaskPage implements OnInit {
     .then(toastData => toastData.present()); 
   }
 }
+

@@ -4,15 +4,11 @@
     margin-top: 5px;
     margin-left: 5px;
 }
-#addIcon {
-    margin-left: 10%;
-    font-size: 30px;
-}
 #strong {
     text-align: center;
     font-size: 20px;
     color: #8C0000;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 #toolbar {
     margin-left: 10px;
@@ -23,4 +19,11 @@ ion-button {
 ion-col {
     margin-bottom: 15px;
     font-size: 16px;
+    margin-left: 15px;
+}
+#detIcon {
+    text-align: center;
+    margin-bottom: 1px;
+    font-size:40px;
+    color:#707070;
 }
