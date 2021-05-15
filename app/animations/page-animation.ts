@@ -1,6 +1,6 @@
 import { AnimationController, Animation } from '@ionic/angular';
 
-export const pageAnimation = (baseEl: HTMLElement, opts?: any ): Animation => {
+export const pageAnimation = (baseEl: HTMLElement, opts?: any): Animation => {
     const DURATION = 800;
     const animationController = new AnimationController();
 
