@@ -1,11 +1,11 @@
 import { AnimationController, Animation } from '@ionic/angular';
 
-export const enterAnimation = (baseEl: HTMLElement, opts?: any ): Animation => {
+export const pageAnimation = (baseEl: HTMLElement, opts?: any ): Animation => {
     const DURATION = 800;
-    const animationCtrl = new AnimationController();
+    const animationController = new AnimationController();
 
     if (opts.direction === 'forward') {
-        return animationCtrl.create()
+        return animationController.create()
         .addElement(opts.enteringEl)
         .duration(DURATION)
         .easing('ease-in')

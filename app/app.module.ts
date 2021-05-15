@@ -10,7 +10,7 @@ import { environment } from "../environments/environment";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { enterAnimation } from './animations/page-animation';
+import { pageAnimation } from './animations/page-animation';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +18,7 @@ import { enterAnimation } from './animations/page-animation';
   imports: [
     BrowserModule, 
     IonicModule.forRoot({
-      navAnimation: enterAnimation
+      navAnimation: pageAnimation
     }), 
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.FIREBASE_CONFIG),
