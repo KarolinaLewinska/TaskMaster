@@ -19,9 +19,6 @@
                 <h2 id="taskTitle" >{{task.title}}</h2>
                 <p>{{task.deadlineDate}}</p>
               </ion-col>
-              <ion-col>
-                <ion-checkbox id="doneCheck" color="danger" (click)="taskDone()"></ion-checkbox>
-              </ion-col>
               <ion-col id="detailsCol">
                 <ion-button (click)="showDetails(task)" fill="clear">
                   <ion-icon id="detailsIcon" name="arrow-redo-sharp"></ion-icon>

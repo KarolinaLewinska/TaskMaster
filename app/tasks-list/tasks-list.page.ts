@@ -89,18 +89,4 @@ export class TasksListPage implements OnInit  {
       this.navController.navigateBack("home");
     });
   }
-  
-  taskDone() {
-    var checkBox = document.getElementById("doneCheck");
-    var text = document.getElementById("taskTitle");
-        if (checkBox) {
-          text.style.textDecoration = "line-through";
-          
-        }
-        else {
-          text.style.textDecoration = "none";
-        }
-        //checkBox!=checkBox;
-      
-  }
 }
