@@ -41,7 +41,6 @@ export class AddTaskPage implements OnInit {
       this.navController.navigateBack("tasks-list");
     }
   }
-  
   validateForms() {
     if (!this.task.deadlineDate) {
       this.showToast("Termin wykonania jest wymagany!")
@@ -69,7 +68,6 @@ export class AddTaskPage implements OnInit {
     }
     return true;
   }
-
   showToast(message: string) {
     this.toastController.create({
       message: message,

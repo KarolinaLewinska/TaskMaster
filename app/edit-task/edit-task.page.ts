@@ -26,7 +26,7 @@ export class EditTaskPage implements OnInit {
   ngOnInit() {
     this.getTask(this.id)
   }
-
+  
   async getTask(id: string) {
     let loader = this.loadingController.create({
       message: "Proszę czekać..." 
@@ -48,7 +48,6 @@ export class EditTaskPage implements OnInit {
       });
       (await loader).dismiss();
   }
-  
   async editTask(task: Task) {
     let currentUser = firebase.auth().currentUser;
     if (this.validateForms()) {
@@ -69,7 +68,6 @@ export class EditTaskPage implements OnInit {
       (await loader).dismiss();
       this.navController.navigateRoot("tasks-list");
     }
-
   }
   validateForms() {
     if (!this.task.deadlineDate) {
@@ -96,7 +94,6 @@ export class EditTaskPage implements OnInit {
       this.showToast("Priorytet zadania jest wymagany!")
       return false;
     }
-    
     return true;
   }
   showToast(message: string) {

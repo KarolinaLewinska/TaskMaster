@@ -17,7 +17,6 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
-
   async login(user: User) {
     if (this.validateForms()) {
       let loader = this.loadingController.create({
@@ -51,7 +50,6 @@ export class LoginPage implements OnInit {
       (await loader).dismiss();
     }
   }
-  
   validateForms() {
     if (!this.user.email) {
       this.showToast("Adres email jest wymagany!")
@@ -63,7 +61,6 @@ export class LoginPage implements OnInit {
     }
     return true;
   }
-
   showToast(message: string) {
     this.toastController.create({
       message: message,

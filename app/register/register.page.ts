@@ -52,7 +52,6 @@ export class RegisterPage implements OnInit {
       (await loader).dismiss();
     }
   }
-
   validateForms() {
     if (!this.user.email) {
       this.showToast("Adres email jest wymagany!")
@@ -64,7 +63,6 @@ export class RegisterPage implements OnInit {
     }
     return true;
   }
-
   showToast(message: string) {
     this.toastController.create({
       message: message,

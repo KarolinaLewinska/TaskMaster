@@ -52,7 +52,6 @@ export class TasksListPage implements OnInit  {
     }
     (await loader).dismiss();
   }
-
   async deleteTask(id: string) {
     let currentUser = firebase.auth().currentUser;
     let loader = this.loadingController.create({
@@ -65,7 +64,6 @@ export class TasksListPage implements OnInit  {
     
     (await loader).dismiss();
   }
-  
   showToast(message: string) {
     this.toastController.create({
       message: message,
@@ -73,7 +71,6 @@ export class TasksListPage implements OnInit  {
     })
     .then(toastData => toastData.present()); 
   }
-
   showDetails(taskDetails) {
       let navigationExtras: NavigationExtras = {
         queryParams: {
@@ -82,7 +79,6 @@ export class TasksListPage implements OnInit  {
       };
       this.navController.navigateForward('task-details', navigationExtras);
   }
-  
   SignOut() {
     return this.angularFireAuth.signOut().then(() => {
       localStorage.removeItem("user");

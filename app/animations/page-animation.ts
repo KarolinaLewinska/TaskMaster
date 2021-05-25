@@ -23,6 +23,7 @@ export const pageAnimation = (baseEl: HTMLElement, opts?: any): Animation => {
         .easing('ease-out')
         .fromTo('opacity', 1 ,0);
 
-        return animationController.create().addAnimation([rootAnimation, leavingAnimation]);
+        return animationController.create()
+            .addAnimation([rootAnimation, leavingAnimation]);
     }
 }
