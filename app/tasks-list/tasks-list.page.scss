@@ -1,23 +1,29 @@
-#back {
+#signout {
     color:#800000;
     font-size: 50px;
-    margin-right: 5px;
+    margin-right: 20px;
     text-align: right;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 #strong {
-    text-align: center;
+    text-align: left;
     font-size: 20px;
     color: #8C0000;
-    margin-bottom: 20px;
+    padding-top: 35px;
+    margin-left: 15px;
 }
 #addButton {
     font-weight: bold;
     position: fixed;
-    bottom: 15px;
+    bottom: 80px;
     right: 130px;
 }
 #toolbar {
+    margin-left: 20px;
+    color:#800000;
+    font-size: 16px;
+}
+#footer {
     margin-left: 10px;
 }
 ion-button {

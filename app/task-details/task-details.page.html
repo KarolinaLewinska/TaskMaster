@@ -1,18 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <img id="toolbar" src="assets\icon\logo2.png" width="120" height="60">
+    <p id="toolbar">Witaj {{user.email}}!</p>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <div id="back">
       <ion-icon [routerLink]="['/tasks-list']" id="back" name="arrow-back-outline"></ion-icon>
   </div>
-  <div id="strong">
-    <strong>Szczegóły</strong>
-  </div>
-  <div id="detIcon">
-    <ion-icon width="120" height="60" id="detIcon" name="search"></ion-icon>
-  </div>
+  <ion-row>
+    <ion-col id="strong">
+      <strong>Szczegóły</strong>
+    </ion-col>
+    <ion-col id="detIcon">
+      <ion-icon width="100" height="50" id="detIcon" name="search"></ion-icon>
+    </ion-col>
+  </ion-row>
   <ion-grid>
     <ion-row>
       <ion-col size="12">
@@ -46,3 +48,8 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <img id="footer" src="assets\icon\logo2.png" width="120" height="60">
+  </ion-toolbar>
+</ion-footer>

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
 import firebase from 'firebase';
-import { Task } from "../shared/task"
+import { Task } from '../shared/task';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'app-add-task',
@@ -12,6 +13,10 @@ import { Task } from "../shared/task"
 
 export class AddTaskPage implements OnInit {
   task = {} as Task;
+  user = {
+    email: firebase.auth().currentUser.email,
+  } as User;
+  
   constructor(
     private toastController: ToastController,
     private loadingController: LoadingController,

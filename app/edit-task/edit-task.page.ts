@@ -3,7 +3,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingController, NavController, ToastController, NavParams } from '@ionic/angular';
 import firebase from 'firebase';
-import { Task } from '../shared/task'
+import { Task } from '../shared/task';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'app-edit-task',
@@ -13,7 +14,10 @@ import { Task } from '../shared/task'
 export class EditTaskPage implements OnInit {
   task = {} as Task;
   id: any;
-  
+  user = {
+    email: firebase.auth().currentUser.email,
+  } as User;
+
   constructor (
     private activatedRoute: ActivatedRoute,
     private loadingController: LoadingController,

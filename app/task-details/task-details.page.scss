@@ -5,12 +5,26 @@
     margin-left: 5px;
 }
 #strong {
-    text-align: center;
+    text-align: left;
     font-size: 20px;
     color: #8C0000;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    padding-top: 25px;
+    margin-left: 20px;
+}
+#detIcon {
+    text-align: right;
+    margin-right: 60px;
+    padding-top: 7px;
+    font-size:40px;
+    color:#707070;
 }
 #toolbar {
+    margin-left: 20px;
+    color:#800000;
+    font-size: 16px;
+}
+#footer {
     margin-left: 10px;
 }
 ion-button {
@@ -20,10 +34,4 @@ ion-col {
     margin-bottom: 15px;
     font-size: 16px;
     margin-left: 15px;
-}
-#detIcon {
-    text-align: center;
-    margin-bottom: 1px;
-    font-size:40px;
-    color:#707070;
 }

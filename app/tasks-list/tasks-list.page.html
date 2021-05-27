@@ -1,15 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <img id="toolbar" src="assets\icon\logo2.png" width="120" height="60">
+    <p id="toolbar">Witaj {{user.email}}!</p>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div id="back">
-    <ion-icon  id="back" (click)="SignOut()" name="log-out-outline"></ion-icon>
-  </div>
-  <div id="strong">
-    <strong>Moje zadania</strong>
-  </div>
+  <ion-row>
+    <ion-col id="strong"><strong >Moje zadania</strong></ion-col>
+    <ion-col id="signout"><ion-icon (click)="SignOut()" name="log-out-outline"></ion-icon></ion-col>
+  </ion-row>
+  
   <ion-list lines="none">
     <ion-item-sliding *ngFor="let task of tasks">
       <ion-item class="no-padding">
@@ -45,5 +44,10 @@
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <img id="footer" src="assets\icon\logo2.png" width="120" height="60">
+  </ion-toolbar>
+</ion-footer>
 
 

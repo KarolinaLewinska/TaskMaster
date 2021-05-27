@@ -3,7 +3,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { NavigationExtras } from '@angular/router';
 import { LoadingController, ToastController, NavController } from '@ionic/angular';
 import firebase from 'firebase';
-import { AngularFireAuth } from "@angular/fire/auth";
+import { AngularFireAuth } from '@angular/fire/auth';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'app-tasks-list',
@@ -12,6 +13,10 @@ import { AngularFireAuth } from "@angular/fire/auth";
 })
 export class TasksListPage implements OnInit  {
   tasks: any;
+  user = {
+    email: firebase.auth().currentUser.email,
+  } as User;
+  
   constructor(
     private loadingController: LoadingController,
     private toastController: ToastController,
@@ -21,6 +26,7 @@ export class TasksListPage implements OnInit  {
 
     ngOnInit() {
       this.getTasks();
+      
     }
 
   async getTasks() {
