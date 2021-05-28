@@ -1,6 +1,6 @@
-import { Injectable, NgZone } from "@angular/core";
-import { Router } from "@angular/router";
-import { AngularFireAuth } from "@angular/fire/auth";
+import { Injectable, NgZone } from '@angular/core';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { NavController } from '@ionic/angular';
 
 @Injectable({
@@ -34,11 +34,10 @@ export class AuthenticationService {
     })
   }
   Register(email, password) {
-    return this.angularFireAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.navController.navigateBack("login");
-      })
+    return this.angularFireAuth.createUserWithEmailAndPassword(email, password)
+    .then((result) => {
+      this.navController.navigateBack("login");
+    })
   }
   isLoggedIn()
   {

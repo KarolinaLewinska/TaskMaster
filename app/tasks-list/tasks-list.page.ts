@@ -26,7 +26,6 @@ export class TasksListPage implements OnInit  {
 
     ngOnInit() {
       this.getTasks();
-      
     }
 
   async getTasks() {
@@ -51,8 +50,7 @@ export class TasksListPage implements OnInit  {
               priority: m.payload.doc.data()["priority"],
             };
           })
-      });
-			
+      });	
     } catch (err) {
       this.showToast(err);
     }
@@ -66,8 +64,8 @@ export class TasksListPage implements OnInit  {
     (await loader).present();
       
     await this.angularFirestore.collection("users")
-    .doc(currentUser.uid).collection('tasks').doc(id).delete();
-    
+      .doc(currentUser.uid).collection('tasks').doc(id).delete();
+      
     (await loader).dismiss();
   }
   showToast(message: string) {

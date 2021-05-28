@@ -35,25 +35,24 @@ export class EditTaskPage implements OnInit {
     let loader = this.loadingController.create({
       message: "Proszę czekać..." 
     });
-
     (await loader).present();
     
-      let currentUser = firebase.auth().currentUser;
-      this.angularFirestore
-      .collection("users").doc(currentUser.uid).collection('tasks')
-      .doc(id).valueChanges()
+    let currentUser = firebase.auth().currentUser;
+    this.angularFirestore.collection("users").doc(currentUser.uid)
+      .collection('tasks').doc(id).valueChanges()
       .subscribe(data => {
-            this.task.deadlineDate = data["deadlineDate"];
-            this.task.deadlineTime = data["deadlineTime"];
-            this.task.title = data["title"];
-            this.task.description = data["description"];
-            this.task.category = data["category"];
-            this.task.priority = data["priority"];  
+        this.task.deadlineDate = data["deadlineDate"];
+        this.task.deadlineTime = data["deadlineTime"];
+        this.task.title = data["title"];
+        this.task.description = data["description"];
+        this.task.category = data["category"];
+        this.task.priority = data["priority"];  
       });
-      (await loader).dismiss();
+    (await loader).dismiss();
   }
   async editTask(task: Task) {
     let currentUser = firebase.auth().currentUser;
+    
     if (this.validateForms()) {
       let loader = this.loadingController.create({
         message: "Proszę czekać..."
@@ -61,14 +60,12 @@ export class EditTaskPage implements OnInit {
       (await loader).present();
 
       try {
-        await this.angularFirestore.collection("users")
-        .doc(currentUser.uid).collection('tasks')
-        .doc(this.id).update(task);
+        await this.angularFirestore.collection("users").doc(currentUser.uid)
+          .collection('tasks').doc(this.id).update(task);
         
       } catch(err) {
         this.showToast(err);
       }
-      
       (await loader).dismiss();
       this.navController.navigateRoot("tasks-list");
     }

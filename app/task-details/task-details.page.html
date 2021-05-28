@@ -1,12 +1,17 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <p id="toolbar">Witaj {{user.email}}!</p>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div id="back">
+  <ion-row>
+    <ion-col id="back">
       <ion-icon [routerLink]="['/tasks-list']" id="back" name="arrow-back-outline"></ion-icon>
-  </div>
+    </ion-col>
+    <ion-col id="edit">
+      <ion-icon [routerLink]="['/edit-task/', task.id]" name="create-outline"></ion-icon>
+    </ion-col>
+  </ion-row>
   <ion-row>
     <ion-col id="strong">
       <strong>Szczegóły</strong>
@@ -15,41 +20,39 @@
       <ion-icon width="100" height="50" id="detIcon" name="search"></ion-icon>
     </ion-col>
   </ion-row>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12">
-        <strong>Termin wykonania:</strong> {{task.deadlineDate}}
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <strong>Godzina wykonania:</strong> {{task.deadlineTime}}
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <strong>Tytuł:</strong> {{task.title}}
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <strong>Opis:</strong> {{task.description}}
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <strong>Kategoria:</strong> {{task.category}}
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <strong>Priorytet:</strong> {{task.priority}}
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-row>
+    <ion-col size="12">
+      <strong>Termin wykonania:</strong> {{task.deadlineDate}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <strong>Godzina wykonania:</strong> {{task.deadlineTime}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <strong>Tytuł:</strong> {{task.title}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <strong>Opis:</strong> {{task.description}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <strong>Kategoria:</strong> {{task.category}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <strong>Priorytet:</strong> {{task.priority}}
+    </ion-col>
+  </ion-row>
 </ion-content>
 <ion-footer>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <img id="footer" src="assets\icon\logo2.png" width="120" height="60">
   </ion-toolbar>
 </ion-footer>

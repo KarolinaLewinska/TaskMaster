@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
 import { User } from '../shared/user';
-import { AuthenticationService } from "../shared/authServices";
+import { AuthenticationService } from '../shared/authServices';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +17,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
+  
   async login(user: User) {
     if (this.validateForms()) {
       let loader = this.loadingController.create({
