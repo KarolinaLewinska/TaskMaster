@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { NavController } from '@ionic/angular';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 
 export class AuthenticationService {
@@ -18,11 +18,11 @@ export class AuthenticationService {
     this.angularFireAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
-        localStorage.setItem("user", JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem("user"));
+        localStorage.setItem('user', JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem('user'));
       } else {
-        localStorage.setItem("user", null);
-        JSON.parse(localStorage.getItem("user"));
+        localStorage.setItem('user', null);
+        JSON.parse(localStorage.getItem('user'));
       }
     });
   }
@@ -30,13 +30,13 @@ export class AuthenticationService {
     this.loggedin = true;
     return this.angularFireAuth.signInWithEmailAndPassword(email, password)
     .then((res) => {
-      this.router.navigate(["tasks-list"]);
+      this.router.navigate(['tasks-list']);
     })
   }
   Register(email, password) {
     return this.angularFireAuth.createUserWithEmailAndPassword(email, password)
     .then((result) => {
-      this.navController.navigateBack("login");
+      this.navController.navigateBack('login');
     })
   }
   isLoggedIn()

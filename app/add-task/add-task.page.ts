@@ -30,45 +30,51 @@ export class AddTaskPage implements OnInit {
   async addTask(task: Task) {
     if (this.validateForms()) {
       let loader = this.loadingController.create({
-        message: "Proszę czekać..."
+        message: 'Proszę czekać...'
       });
       (await loader).present();
 
       try {
         let currentUser = firebase.auth().currentUser;
         this.angularFirestore.collection('users')
-        .doc(currentUser.uid).collection("tasks").add(task);
+        .doc(currentUser.uid).collection('tasks').add(task);
 
       } catch(err) {
         this.showToast(err);
       }
       (await loader).dismiss();
-      this.navController.navigateBack("tasks-list");
+      this.navController.navigateBack('tasks-list');
     }
   }
   validateForms() {
     if (!this.task.deadlineDate) {
-      this.showToast("Termin wykonania jest wymagany!")
+      this.showToast('Termin wykonania jest wymagany!')
+      navigator.vibrate(3000);
       return false;
     }
     if (!this.task.deadlineTime) {
-      this.showToast("Godzina wykonania jest wymagana!")
+      this.showToast('Godzina wykonania jest wymagana!')
+      navigator.vibrate(3000);
       return false;
     }
     if (!this.task.title) {
-      this.showToast("Tytuł zadania jest wymagany!")
+      this.showToast('Tytuł zadania jest wymagany!')
+      navigator.vibrate(3000);
       return false;
     }
     if (!this.task.description) {
-      this.showToast("Opis zadania jest wymagany!")
+      this.showToast('Opis zadania jest wymagany!')
+      navigator.vibrate(3000);
       return false;
     }
     if (!this.task.category) {
-      this.showToast("Kategoria zadania jest wymagana!")
+      this.showToast('Kategoria zadania jest wymagana!')
+      navigator.vibrate(3000);
       return false;
     }
     if (!this.task.priority) {
-      this.showToast("Priorytet zadania jest wymagany!")
+      this.showToast('Priorytet zadania jest wymagany!')
+      navigator.vibrate(3000);
       return false;
     }
     return true;
@@ -80,5 +86,9 @@ export class AddTaskPage implements OnInit {
     })
     .then(toastData => toastData.present()); 
   }
+}
+document.addEventListener('deviceready', onDeviceReady, false);
+  function onDeviceReady() {
+  console.log(navigator.vibrate);
 }
 

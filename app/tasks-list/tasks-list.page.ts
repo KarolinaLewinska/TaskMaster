@@ -30,24 +30,24 @@ export class TasksListPage implements OnInit  {
 
   async getTasks() {
     let loader = this.loadingController.create({
-      message: "Proszę czekać..."
+      message: 'Proszę czekać...'
     });
     (await loader).present();
 
     try {
       let currentUser = firebase.auth().currentUser;
-			this.angularFirestore.collection("users").doc(currentUser.uid)
-        .collection('tasks').snapshotChanges()
+			this.angularFirestore.collection('users').doc(currentUser.uid)
+        .collection('tasks', ref => ref.orderBy('deadlineDate')).snapshotChanges()
         .subscribe(data => {
           this.tasks = data.map(m => {
             return {
               id: m.payload.doc.id,
-              deadlineDate: m.payload.doc.data()["deadlineDate"].split('T')[0],
-              deadlineTime: m.payload.doc.data()["deadlineTime"].split('T')[1].substring(0,5),
-              title: m.payload.doc.data()["title"],
-              description: m.payload.doc.data()["description"],
-              category: m.payload.doc.data()["category"],
-              priority: m.payload.doc.data()["priority"],
+              deadlineDate: m.payload.doc.data()['deadlineDate'].split('T')[0],
+              deadlineTime: m.payload.doc.data()['deadlineTime'].split('T')[1].substring(0,5),
+              title: m.payload.doc.data()['title'],
+              description: m.payload.doc.data()['description'],
+              category: m.payload.doc.data()['category'],
+              priority: m.payload.doc.data()['priority'],
             };
           })
       });	
@@ -59,11 +59,11 @@ export class TasksListPage implements OnInit  {
   async deleteTask(id: string) {
     let currentUser = firebase.auth().currentUser;
     let loader = this.loadingController.create({
-      message: "Proszę czekać..."
+      message: 'Proszę czekać...'
     });
     (await loader).present();
       
-    await this.angularFirestore.collection("users")
+    await this.angularFirestore.collection('users')
       .doc(currentUser.uid).collection('tasks').doc(id).delete();
       
     (await loader).dismiss();
@@ -85,8 +85,9 @@ export class TasksListPage implements OnInit  {
   }
   SignOut() {
     return this.angularFireAuth.signOut().then(() => {
-      localStorage.removeItem("user");
-      this.navController.navigateBack("home");
+      localStorage.removeItem('user');
+      this.navController.navigateBack('home');
     });
   }
 }
+

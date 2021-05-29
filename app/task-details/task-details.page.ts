@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from "../shared/task";
+import { Task } from '../shared/task';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from '../shared/user';
@@ -23,7 +23,7 @@ export class TaskDetailsPage implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-    this.task = params["task"]
+    this.task = params['task']
   });
   }
 }

@@ -22,7 +22,7 @@ export class RegisterPage implements OnInit {
   async register(user: User) {
     if (this.validateForms()) {
       let loader = this.loadingController.create({
-          message: "Proszę czekać..."
+          message: 'Proszę czekać...'
       });
       (await loader).present();
 
@@ -34,19 +34,23 @@ export class RegisterPage implements OnInit {
         var errorMessage = err.message;
 
         if (errorCode == 'auth/internal-error') {
-          errorMessage="Błąd uwierzytelniania!"
+          errorMessage='Błąd uwierzytelniania!'
           this.showToast(errorMessage);
+          navigator.vibrate(3000);
         } 
         else if (errorCode == 'auth/email-already-in-use') {
-          errorMessage="Użytkownik o podanym adresie email już istnieje!"
+          errorMessage='Użytkownik o podanym adresie email już istnieje!'
           this.showToast(errorMessage);
+          navigator.vibrate(3000);
         }
         else if (user.email || user.password) {
-          errorMessage="Nieprawidłowy format adresu email lub hasła!"
+          errorMessage='Nieprawidłowy format adresu email lub hasła!'
           this.showToast(errorMessage);
+          navigator.vibrate(3000);
         }
         else {
           this.showToast(err);
+          navigator.vibrate(3000);
         }
       }
       (await loader).dismiss();
@@ -54,11 +58,13 @@ export class RegisterPage implements OnInit {
   }
   validateForms() {
     if (!this.user.email) {
-      this.showToast("Adres email jest wymagany!")
+      this.showToast('Adres email jest wymagany!')
+      navigator.vibrate(3000);
       return false;
     }
     if (!this.user.password) {
-      this.showToast("Hasło jest wymagane!")
+      this.showToast('Hasło jest wymagane!')
+      navigator.vibrate(3000);
       return false;
     }
     return true;
@@ -70,4 +76,8 @@ export class RegisterPage implements OnInit {
     })
     .then(toastData => toastData.present()); 
   }
+}
+document.addEventListener('deviceready', onDeviceReady, false);
+  function onDeviceReady() {
+  console.log(navigator.vibrate);
 }

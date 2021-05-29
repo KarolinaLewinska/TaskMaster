@@ -11,7 +11,6 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { pageAnimation } from './animations/page-animation';
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

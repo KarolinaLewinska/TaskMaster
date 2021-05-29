@@ -24,7 +24,7 @@ export class EditTaskPage implements OnInit {
     private angularFirestore: AngularFirestore,
     private toastController: ToastController,
     private navController: NavController) { 
-      this.id = this.activatedRoute.snapshot.paramMap.get("id");
+      this.id = this.activatedRoute.snapshot.paramMap.get('id');
     }
 
   ngOnInit() {
@@ -33,20 +33,20 @@ export class EditTaskPage implements OnInit {
   
   async getTask(id: string) {
     let loader = this.loadingController.create({
-      message: "Proszę czekać..." 
+      message: 'Proszę czekać...' 
     });
     (await loader).present();
     
     let currentUser = firebase.auth().currentUser;
-    this.angularFirestore.collection("users").doc(currentUser.uid)
+    this.angularFirestore.collection('users').doc(currentUser.uid)
       .collection('tasks').doc(id).valueChanges()
       .subscribe(data => {
-        this.task.deadlineDate = data["deadlineDate"];
-        this.task.deadlineTime = data["deadlineTime"];
-        this.task.title = data["title"];
-        this.task.description = data["description"];
-        this.task.category = data["category"];
-        this.task.priority = data["priority"];  
+        this.task.deadlineDate = data['deadlineDate'];
+        this.task.deadlineTime = data['deadlineTime'];
+        this.task.title = data['title'];
+        this.task.description = data['description'];
+        this.task.category = data['category'];
+        this.task.priority = data['priority'];  
       });
     (await loader).dismiss();
   }
@@ -55,44 +55,50 @@ export class EditTaskPage implements OnInit {
     
     if (this.validateForms()) {
       let loader = this.loadingController.create({
-        message: "Proszę czekać..."
+        message: 'Proszę czekać...'
       });
       (await loader).present();
 
       try {
-        await this.angularFirestore.collection("users").doc(currentUser.uid)
+        await this.angularFirestore.collection('users').doc(currentUser.uid)
           .collection('tasks').doc(this.id).update(task);
         
       } catch(err) {
         this.showToast(err);
       }
       (await loader).dismiss();
-      this.navController.navigateRoot("tasks-list");
+      this.navController.navigateRoot('tasks-list');
     }
   }
   validateForms() {
     if (!this.task.deadlineDate) {
-      this.showToast("Termin wykonania jest wymagany!")
+      this.showToast('Termin wykonania jest wymagany!')
+      navigator.vibrate(3000);
       return false;
     }
     if (!this.task.deadlineTime) {
-      this.showToast("Godzina wykonania jest wymagana!")
+      this.showToast('Godzina wykonania jest wymagana!')
+      navigator.vibrate(3000);
       return false;
     }
     if (!this.task.title) {
-      this.showToast("Tytuł zadania jest wymagany!")
+      this.showToast('Tytuł zadania jest wymagany!')
+      navigator.vibrate(3000);
       return false;
     }
     if (!this.task.description) {
-      this.showToast("Opis zadania jest wymagany!")
+      this.showToast('Opis zadania jest wymagany!')
+      navigator.vibrate(3000);
       return false;
     }
     if (!this.task.category) {
-      this.showToast("Kategoria zadania jest wymagana!")
+      this.showToast('Kategoria zadania jest wymagana!')
+      navigator.vibrate(3000);
       return false;
     }
     if (!this.task.priority) {
-      this.showToast("Priorytet zadania jest wymagany!")
+      this.showToast('Priorytet zadania jest wymagany!')
+      navigator.vibrate(3000);
       return false;
     }
     return true;
@@ -104,4 +110,8 @@ export class EditTaskPage implements OnInit {
     })
     .then(toastData => toastData.present()); 
   }
+}
+document.addEventListener('deviceready', onDeviceReady, false);
+  function onDeviceReady() {
+  console.log(navigator.vibrate);
 }
