@@ -21,7 +21,7 @@ export const pageAnimation = (baseEl: HTMLElement, opts?: any): Animation => {
             .addElement(opts.leavingEl)
             .duration(DURATION)
             .easing('ease-out')
-            .fromTo('opacity', 1 ,0);
+            .fromTo('opacity',1 ,0);
 
         return animationController.create()
             .addAnimation([rootAnimation, leavingAnimation]);
