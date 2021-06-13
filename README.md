@@ -1,9 +1,9 @@
 # TaskMaster
 - Aplikacja do zarządzania zadaniami 
 - Ionic, Angular.js
-- Backend z wykorzystaniem Firebase
+- Backend z wykorzystaniem Firebase <br/>
 
-Wygląd interfejsów:
+**Wygląd interfejsów:** <br/>
 ![home](https://github.com/KarolinaLewinska/TaskMaster/blob/master/Interfaces/home.PNG)
 ![login](https://github.com/KarolinaLewinska/TaskMaster/blob/master/Interfaces/login.PNG)
 ![register](https://github.com/KarolinaLewinska/TaskMaster/blob/master/Interfaces/register.PNG)
