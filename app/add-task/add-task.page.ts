@@ -38,14 +38,14 @@ export class AddTaskPage implements OnInit {
         let currentUser = firebase.auth().currentUser;
         this.angularFirestore.collection('users')
         .doc(currentUser.uid).collection('tasks').add(task);
-
-      } catch(err) {
+      } catch (err) {
         this.showToast(err);
       }
       (await loader).dismiss();
       this.navController.navigateBack('tasks-list');
     }
   }
+  
   validateForms() {
     if (!this.task.deadlineDate) {
       this.showToast('Termin wykonania jest wymagany!')
@@ -77,8 +77,10 @@ export class AddTaskPage implements OnInit {
       navigator.vibrate(3000);
       return false;
     }
+
     return true;
   }
+
   showToast(message: string) {
     this.toastController.create({
       message: message,
@@ -87,6 +89,7 @@ export class AddTaskPage implements OnInit {
     .then(toastData => toastData.present()); 
   }
 }
+
 document.addEventListener('deviceready', onDeviceReady, false);
   function onDeviceReady() {
   console.log(navigator.vibrate);

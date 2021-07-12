@@ -28,7 +28,7 @@ export class LoginPage implements OnInit {
       try {
         await this.authServices.LogIn(user.email, user.password)
         
-      } catch(err) {
+      } catch (err) {
         var errorCode = err.code;
         var errorMessage = err.message;
 
@@ -55,6 +55,7 @@ export class LoginPage implements OnInit {
       (await loader).dismiss();
     }
   }
+
   validateForms() {
     if (!this.user.email) {
       this.showToast('Adres email jest wymagany!')
@@ -66,8 +67,10 @@ export class LoginPage implements OnInit {
       navigator.vibrate(3000);
       return false;
     }
+
     return true;
   }
+
   showToast(message: string) {
     this.toastController.create({
       message: message,
@@ -76,6 +79,7 @@ export class LoginPage implements OnInit {
     .then(toastData => toastData.present()); 
   }
 }
+
 document.addEventListener('deviceready', onDeviceReady, false);
   function onDeviceReady() {
   console.log(navigator.vibrate);

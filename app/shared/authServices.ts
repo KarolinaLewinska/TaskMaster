@@ -26,6 +26,7 @@ export class AuthenticationService {
       }
     });
   }
+  
   LogIn(email, password) {
     this.loggedin = true;
     return this.angularFireAuth.signInWithEmailAndPassword(email, password)
@@ -33,12 +34,14 @@ export class AuthenticationService {
       this.router.navigate(['tasks-list']);
     })
   }
+
   Register(email, password) {
     return this.angularFireAuth.createUserWithEmailAndPassword(email, password)
     .then((result) => {
       this.navController.navigateBack('login');
     })
   }
+
   isLoggedIn()
   {
     if (this.loggedin == true) {

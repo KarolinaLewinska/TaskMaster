@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="secondary">
-    <p id="toolbar">Witaj {{user.email}}!</p>
+    <p id="toolbar">Witaj {{ user.email }}!</p>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -17,37 +17,37 @@
       <strong>Szczegóły</strong>
     </ion-col>
     <ion-col id="detIcon">
-      <ion-icon width="100" height="50" id="detIcon" name="search"></ion-icon>
+      <ion-icon width="100" height="50" id="detIcon" name="search"/></ion-icon>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col size="12">
-      <strong>Termin wykonania:</strong> {{task.deadlineDate}}
+      <strong>Termin wykonania:</strong> {{ task.deadlineDate }}
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col size="12">
-      <strong>Godzina wykonania:</strong> {{task.deadlineTime}}
+      <strong>Godzina wykonania:</strong> {{ task.deadlineTime }}
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col size="12">
-      <strong>Tytuł:</strong> {{task.title}}
+      <strong>Tytuł:</strong> {{ task.title }}
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col size="12">
-      <strong>Opis:</strong> {{task.description}}
+      <strong>Opis:</strong> {{ task.description }}
+    </ion-col> 
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <strong>Kategoria:</strong> {{ task.category }}
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col size="12">
-      <strong>Kategoria:</strong> {{task.category}}
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col size="12">
-      <strong>Priorytet:</strong> {{task.priority}}
+      <strong>Priorytet:</strong> {{ task.priority }}
     </ion-col>
   </ion-row>
 </ion-content>

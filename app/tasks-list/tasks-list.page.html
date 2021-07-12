@@ -18,8 +18,8 @@
           <ion-label>
             <ion-row>
               <ion-col>
-                <h2 id="taskTitle" >{{task.title}}</h2>
-                <p>{{task.deadlineDate}}</p>
+                <h2 id="taskTitle" >{{ task.title }}</h2>
+                <p>{{ task.deadlineDate }}</p>
               </ion-col>
               <ion-col id="detailsCol">
                 <ion-button (click)="showDetails(task)" fill="clear">
@@ -31,7 +31,7 @@
       </ion-item>
       <ion-item-options  side="start">
         <ion-item-option color="danger">
-          <ion-icon [routerLink]="['/edit-task/', task.id]" slot="icon-only" name="create-outline" ></ion-icon>
+          <ion-icon [routerLink]="['/edit-task/', task.id]" slot="icon-only" name="create-outline"></ion-icon>
         </ion-item-option>
       </ion-item-options>
       <ion-item-options  side="end">

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="secondary">
-    <p id="toolbar">Witaj {{user.email}}!</p>
+    <p id="toolbar">Witaj {{ user.email }}!</p>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -39,7 +39,7 @@
         <ion-select-option value="Inne">Inne</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-radio-group [(ngModel)]="task.priority" value="Pilne" >
+    <ion-radio-group [(ngModel)]="task.priority" value="Pilne">
       <ion-item>
         <ion-label>Priorytet</ion-label>
       </ion-item>
@@ -60,7 +60,7 @@
   <ion-grid>
     <ion-row>
       <ion-col class="ion-text-center">
-        <ion-button id="editButton" color="danger" (click)="editTask(task)" >
+        <ion-button id="editButton" color="danger" (click)="editTask(task)">
           Edytuj
         </ion-button>
       </ion-col>
