@@ -1,16 +1,18 @@
 #back {
     color:#800000;
-    font-size:50px;
+    font-size: 50px;
     margin-top: 8px;
     margin-left: 5px;
 }
+
 #edit {
     text-align: right;
     color:#800000;
-    font-size:45px;
+    font-size: 45px;
     margin-top: 15px;
     margin-right: 15px;
 }
+
 #strong {
     text-align: left;
     font-size: 20px;
@@ -19,24 +21,29 @@
     margin-top: 15px;
     margin-left: 20px;
 }
+
 #detIcon {
     text-align: right;
     margin-right: 60px;
     margin-top: 3px;
-    font-size:40px;
+    font-size: 40px;
     color:#707070;
 }
+
 #toolbar {
     margin-left: 20px;
     color:#800000;
     font-size: 16px;
 }
+
 #footer {
     margin-left: 10px;
 }
+
 ion-button {
     font-weight: bold;
 }
+
 ion-col {
     margin-bottom: 15px;
     font-size: 16px;
