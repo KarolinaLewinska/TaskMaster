@@ -1,5 +1,5 @@
 # Task Master
-Application which lets add, edit and delete tasks.
+Application which lets add, edit and delete tasks. It includes also user authentication.
 - Ionic, Angular.js
 - Firebase backend <br/>
 
