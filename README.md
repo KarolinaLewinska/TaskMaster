@@ -1,9 +1,9 @@
-# TaskMaster
-- Aplikacja do zarządzania zadaniami 
+# Task Master
+Application which lets add, edit and delete tasks.
 - Ionic, Angular.js
-- Backend z wykorzystaniem Firebase <br/>
+- Firebase backend <br/>
 
-**Wygląd interfejsów:** <br/>
+**Interfaces:** <br/>
 ![home](https://github.com/KarolinaLewinska/TaskMaster/blob/master/Interfaces/home.PNG)
 ![login](https://github.com/KarolinaLewinska/TaskMaster/blob/master/Interfaces/login.PNG)
 ![register](https://github.com/KarolinaLewinska/TaskMaster/blob/master/Interfaces/register.PNG)
