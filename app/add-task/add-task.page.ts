@@ -37,7 +37,7 @@ export class AddTaskPage implements OnInit {
       try {
         let currentUser = firebase.auth().currentUser;
         this.angularFirestore.collection('users')
-        .doc(currentUser.uid).collection('tasks').add(task);
+          .doc(currentUser.uid).collection('tasks').add(task);
       } catch (err) {
         this.showToast(err);
       }

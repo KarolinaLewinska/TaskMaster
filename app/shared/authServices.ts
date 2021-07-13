@@ -15,7 +15,7 @@ export class AuthenticationService {
     public angularFireAuth: AngularFireAuth,
     public router: Router,
     public navController: NavController) {
-    this.angularFireAuth.authState.subscribe((user) => {
+      this.angularFireAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));

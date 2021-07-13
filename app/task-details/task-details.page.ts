@@ -23,7 +23,7 @@ export class TaskDetailsPage implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-    this.task = params['task']
+      this.task = params['task']
   });
   }
 }

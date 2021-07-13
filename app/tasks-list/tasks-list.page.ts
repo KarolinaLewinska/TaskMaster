@@ -43,7 +43,7 @@ export class TasksListPage implements OnInit  {
             return {
               id: m.payload.doc.id,
               deadlineDate: m.payload.doc.data()['deadlineDate'].split('T')[0],
-              deadlineTime: m.payload.doc.data()['deadlineTime'].split('T')[1].substring(0,5),
+              deadlineTime: m.payload.doc.data()['deadlineTime'].split('T')[1].substring(0, 5),
               title: m.payload.doc.data()['title'],
               description: m.payload.doc.data()['description'],
               category: m.payload.doc.data()['category'],
@@ -56,6 +56,7 @@ export class TasksListPage implements OnInit  {
     }
     (await loader).dismiss();
   }
+
   async deleteTask(id: string) {
     let currentUser = firebase.auth().currentUser;
     let loader = this.loadingController.create({
@@ -68,6 +69,7 @@ export class TasksListPage implements OnInit  {
       
     (await loader).dismiss();
   }
+
   showToast(message: string) {
     this.toastController.create({
       message: message,
@@ -75,6 +77,7 @@ export class TasksListPage implements OnInit  {
     })
     .then(toastData => toastData.present()); 
   }
+
   showDetails(taskDetails) {
       let navigationExtras: NavigationExtras = {
         queryParams: {
@@ -83,6 +86,7 @@ export class TasksListPage implements OnInit  {
       };
       this.navController.navigateForward('task-details', navigationExtras);
   }
+  
   SignOut() {
     return this.angularFireAuth.signOut().then(() => {
       localStorage.removeItem('user');
