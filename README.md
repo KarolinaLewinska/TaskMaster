@@ -1,8 +1,11 @@
 # Task Master
-The other co-author: [Justyna Gapys](https://github.com/justynagapys).<br/>
-Application which lets add, edit and delete tasks. It includes also user authentication.
-- Ionic, Angular.js,
-- Firebase backend. <br/>
+**Co-author:**<br/>
+[Justyna Gapys](https://github.com/justynagapys)<br/>
+
+## Description
+Application which lets add, edit and delete tasks. It includes also user authentication.<br/>
+- Ionic, Angular.js,<br/>
+- Firebase backend.<br/>
 
 ## Interfaces <br/>
 ![home](https://github.com/KarolinaLewinska/TaskMaster/blob/master/Interfaces/home.PNG)
